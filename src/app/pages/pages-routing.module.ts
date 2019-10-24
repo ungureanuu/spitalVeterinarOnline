@@ -44,6 +44,11 @@ const routes: Routes = [{
         .then(m => m.ExtraComponentsModule),
     },
     {
+      path: 'pet-timeline',
+      loadChildren: () => import('./pet-timeline/pet-timeline.module')
+        .then(m => m.PetTimelineModule),
+    },
+    {
       path: 'maps',
       loadChildren: () => import('./maps/maps.module')
         .then(m => m.MapsModule),
