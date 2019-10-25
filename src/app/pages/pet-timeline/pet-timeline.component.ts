@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-pet-timeline',
-  template: `
-    <router-outlet></router-outlet>
-  `,
+  templateUrl: 'pet-timeline.component.html',
 })
 export class PetTimelineComponent {
 }

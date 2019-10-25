@@ -58,5 +58,8 @@ const MODULES = [
   declarations: [
     ...COMPONENTS,
   ],
+  providers: [
+    { provide: Window, useValue: window }
+    ]
 })
 export class PetTimelineModule { }
