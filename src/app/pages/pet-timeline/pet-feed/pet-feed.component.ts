@@ -6,9 +6,10 @@ import { NbCalendarRange, NbDateService } from '@nebular/theme';
   templateUrl: 'pet-feed.component.html',
   styleUrls: ['pet-feed.component.scss'],
 })
-export class PetFeedComponent implements OnInit{
+export class PetFeedComponent implements OnInit {
 
   ngOnInit() {
     console.log('in pet feed');
   }
 }
+

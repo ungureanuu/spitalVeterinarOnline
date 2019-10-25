@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'pet-filter.component.html',
   styleUrls: ['pet-filter.component.scss'],
 })
-export class PetFilterComponent implements OnInit{
+export class PetFilterComponent implements OnInit {
 
   ngOnInit() {
     console.log('in pet filter');

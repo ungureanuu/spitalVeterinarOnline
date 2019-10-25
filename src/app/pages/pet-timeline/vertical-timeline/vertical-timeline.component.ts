@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'vertical-timeline.component.html',
   styleUrls: ['vertical-timeline.component.scss'],
 })
-export class VerticalTimelineComponent implements OnInit{
+export class VerticalTimelineComponent implements OnInit {
 
   ngOnInit() {
     console.log('in pet timeline');
