@@ -7,18 +7,28 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   link: '/pages/dashboard',
   //   home: true,
   // },
-  // {
-  //   title: 'IoT Dashboard',
-  //   icon: 'home-outline',
-  //   link: '/pages/iot-dashboard',
-  // },
+  {
+    title: 'Acasa',
+    icon: 'home-outline',
+    link: '/',
+  },
   {
     title: 'Servicii',
     group: true,
   },
   {
     title: 'Axa Vietii',
-    icon: 'home-outline',
+    icon: 'message-circle-outline',
+    link: '/pages/pet-timeline',
+  },
+  {
+    title: 'Intreaba medicul',
+    icon: 'layout-outline',
+    link: '/pages/pet-timeline',
+  },
+  {
+    title: 'Anunturi',
+    icon: 'shopping-cart-outline',
     link: '/pages/pet-timeline',
   },
   // {

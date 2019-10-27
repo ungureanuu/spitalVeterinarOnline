@@ -17,6 +17,7 @@ import {
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { PetTimelineRoutingModule } from './pet-timeline-routing.module';
+import { CustomMaterialModule } from '../custom-material/custom-material.module';
 
 // components
 import { PetTimelineComponent } from './pet-timeline.component';
@@ -49,6 +50,7 @@ const MODULES = [
   NbTabsetModule,
   ThemeModule,
   PetTimelineRoutingModule,
+  CustomMaterialModule,
 ];
 
 @NgModule({
@@ -59,7 +61,7 @@ const MODULES = [
     ...COMPONENTS,
   ],
   providers: [
-    { provide: Window, useValue: window }
-    ]
+    { provide: Window, useValue: window },
+  ],
 })
 export class PetTimelineModule { }
