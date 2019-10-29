@@ -17,7 +17,9 @@ import {
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { PetTimelineRoutingModule } from './pet-timeline-routing.module';
-import { CustomMaterialModule } from '../custom-material/custom-material.module';
+import { CustomMaterialModule } from '../shared/custom-material/custom-material.module';
+import { SharedModule } from '../shared/shared.module';
+
 
 // components
 import { PetTimelineComponent } from './pet-timeline.component';
@@ -51,6 +53,7 @@ const MODULES = [
   ThemeModule,
   PetTimelineRoutingModule,
   CustomMaterialModule,
+  SharedModule,
 ];
 
 @NgModule({

@@ -14,9 +14,49 @@ declare global {
 export class VerticalTimelineComponent implements OnInit, AfterViewChecked{
   @ViewChild('timeline', {static: false}) container : ElementRef;
 
+  public timelineItems = null;
+
   constructor() { };
 
   ngOnInit() {
+    this.timelineItems = [
+      {
+        age: 2,
+        Title: "Title",
+        Date: new Date(),
+        Description: "Lorem ipsum dolor sit amet",
+      },
+      {
+        age: 2,
+        Title: "Title",
+        Date: new Date(),
+        Description: "Lorem ipsum dolor sit amet",
+      },
+      {
+        age: 2,
+        Title: "Title",
+        Date: new Date(),
+        Description: "Lorem ipsum dolor sit amet",
+      },
+      {
+        age: 2,
+        Title: "Title",
+        Date: new Date(),
+        Description: "Lorem ipsum dolor sit amet",
+      },
+      {
+        age: 2,
+        Title: "Title",
+        Date: new Date(),
+        Description: "Lorem ipsum dolor sit amet",
+      },
+      {
+        age: 2,
+        Title: "Title",
+        Date: new Date(),
+        Description: "Lorem ipsum dolor sit amet",
+      }
+    ];
     console.log('in pet timeline');
     window.sr = ScrollReveal();
   };

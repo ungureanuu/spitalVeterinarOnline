@@ -1,17 +1,20 @@
 <section #timeline class="timeline">
   <div class="container">
-    <div class="timeline-item">
-      <div class="timeline-img">1 zi</div>
-
-      <div class="timeline-content js--fadeInLeft">
-        <h2>Title</h2>
-        <div class="date">1 MAY 2016</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
+    <div timeline-item class="timeline-item" *ngFor="let item of timelineItems; let even=even" >
+      <div class="timeline-img">{{item.age}}</div>
+      <div class="timeline-content" [ngClass]="even===true ? 'js--fadeInLeft' : 'timeline-card js--fadeInRight'">
+        <div class="timeline-img-header" *ngIf="!even">
+          <h2>{{item.Title}}</h2>
+        </div>
+        <h2 *ngIf="even">{{item.Title}}</h2>
+        <div class="date">{{item.Date}}</div>
+        <p>{{item.Description}}</p>
         <a class="bnt-more" href="javascript:void(0)">More</a>
       </div>
     </div> 
 
-    <div class="timeline-item">
+
+    <!-- <div class="timeline-item">
 
       <div class="timeline-img"></div>
 
@@ -112,7 +115,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
         <a class="bnt-more" href="javascript:void(0)">More</a>
       </div>
-    </div>   
+    </div>    -->
 
 
 
