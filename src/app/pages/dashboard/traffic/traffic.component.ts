@@ -8,17 +8,7 @@ import { TrafficChartData } from '../../../@core/data/traffic-chart';
   selector: 'ngx-traffic',
   styleUrls: ['./traffic.component.scss'],
   template: `
-    <nb-card size="tiny">
-      <nb-card-header>
-        <span>Traffic Consumption</span>
 
-        <nb-select [(selected)]="type">
-          <nb-option *ngFor="let t of types" [value]="t">{{ t }}</nb-option>
-        </nb-select>
-      </nb-card-header>
-
-      <ngx-traffic-chart [points]="trafficChartPoints"></ngx-traffic-chart>
-    </nb-card>
   `,
 })
 export class TrafficComponent implements OnDestroy {
@@ -48,4 +38,15 @@ export class TrafficComponent implements OnDestroy {
   ngOnDestroy() {
     this.alive = false;
   }
+//   <nb-card size="tiny">
+//   <nb-card-header>
+//     <span>Traffic Consumption</span>
+
+//     <nb-select [(selected)]="type">
+//       <nb-option *ngFor="let t of types" [value]="t">{{ t }}</nb-option>
+//     </nb-select>
+//   </nb-card-header>
+
+//   <ngx-traffic-chart [points]="trafficChartPoints"></ngx-traffic-chart>
+// </nb-card>
 }
