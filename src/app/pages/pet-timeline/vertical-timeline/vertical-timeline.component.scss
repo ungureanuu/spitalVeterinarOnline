@@ -5,6 +5,7 @@ $text: #FFFFFF;
 $primary-text: #212121;
 $secondary-text: #757575;
 $accent: #FF4081;
+$valueWord: ellipsis;
 
 section {
   padding: 100px 0;
@@ -117,14 +118,49 @@ header {
 }
 
 .timeline-img {
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 50px;
 	background: $primary;
 	border-radius: 50%;
 	position: absolute;
-	left: 50%;
+	left: 48.5%;
 	margin-top: 25px;
 	margin-left: -15px;
+}
+
+.timeline-img:hover {
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+	left: 45.5%;
+    z-index: 2;
+}
+
+.timeline-img:hover .timeline-value-cnt {
+	padding: 20% 10%;
+}
+
+.timeline-img:hover .timeline-value-word {	
+	width: 100%;
+    text-overflow: unset;
+}
+
+.timeline-value-cnt {
+	padding: 0% 10%;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.timeline-value-number {
+	text-align: center;
+}
+
+.timeline-value-word {
+	white-space: nowrap;
+    width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 a {

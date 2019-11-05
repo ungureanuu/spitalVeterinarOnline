@@ -5,13 +5,13 @@ import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
-// import {
-//   AnalyticsService,
-//   LayoutService,
-//   PlayerService,
-//   StateService,
-// } from './utils';
-// import { UserData } from './data/users';
+import {
+  // AnalyticsService,
+  LayoutService,
+  // PlayerService,
+  // StateService,
+} from './utils';
+import { UserData } from './data/users';
 // import { ElectricityData } from './data/electricity';
 // import { SmartTableData } from './data/smart-table';
 // import { UserActivityData } from './data/user-activity';
@@ -31,7 +31,7 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 // import { VisitorsAnalyticsData } from './data/visitors-analytics';
 // import { SecurityCamerasData } from './data/security-cameras';
 
-// import { UserService } from './mock/users.service';
+import { UserService } from './mock/users.service';
 // import { ElectricityService } from './mock/electricity.service';
 // import { SmartTableService } from './mock/smart-table.service';
 // import { UserActivityService } from './mock/user-activity.service';
@@ -70,8 +70,8 @@ const socialLinks = [
   },
 ];
 
-// const DATA_SERVICES = [
-//   { provide: UserData, useClass: UserService },
+const DATA_SERVICES = [
+  { provide: UserData, useClass: UserService },
 //   { provide: ElectricityData, useClass: ElectricityService },
 //   { provide: SmartTableData, useClass: SmartTableService },
 //   { provide: UserActivityData, useClass: UserActivityService },
@@ -90,7 +90,7 @@ const socialLinks = [
 //   { provide: StatsProgressBarData, useClass: StatsProgressBarService },
 //   { provide: VisitorsAnalyticsData, useClass: VisitorsAnalyticsService },
 //   { provide: SecurityCamerasData, useClass: SecurityCamerasService },
-// ];
+];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
   getRole() {
@@ -101,7 +101,7 @@ export class NbSimpleRoleProvider extends NbRoleProvider {
 
 export const NB_CORE_PROVIDERS = [
   // ...MockDataModule.forRoot().providers,
-  // ...DATA_SERVICES,
+  ...DATA_SERVICES,
   ...NbAuthModule.forRoot({
 
     strategies: [
@@ -138,7 +138,7 @@ export const NB_CORE_PROVIDERS = [
     provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
   },
   // AnalyticsService,
-  // LayoutService,
+  LayoutService,
   // PlayerService,
   // StateService,
 ];

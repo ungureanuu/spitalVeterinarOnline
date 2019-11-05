@@ -8,9 +8,9 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
-  // NbChatModule,
-  // NbDatepickerModule,
-  // NbDialogModule,
+  NbChatModule,
+  NbDatepickerModule,
+  NbDialogModule,
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
@@ -29,13 +29,13 @@ import {
 
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
-    //NbDatepickerModule.forRoot(),
-    //NbDialogModule.forRoot(),
+    NbDatepickerModule.forRoot(),
+    NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
-    // NbChatModule.forRoot({
-    //   messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
-    // }),
+    NbChatModule.forRoot({
+      messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+    }),
     CoreModule.forRoot(),
   ],
   bootstrap: [AppComponent],
