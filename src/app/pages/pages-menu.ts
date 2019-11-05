@@ -19,17 +19,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Axa Vietii',
     icon: 'message-circle-outline',
-    link: '/pages/pet-timeline',
+    link: '/pages/axa-vietii',
+  },
+  {
+    title: 'Articole',
+    icon: 'grid-outline',
+    link: '/pages/articole',
   },
   {
     title: 'Intreaba medicul',
     icon: 'layout-outline',
-    link: '/pages/pet-timeline',
+    link: '/pages/axa-vietii',
   },
   {
     title: 'Anunturi',
     icon: 'shopping-cart-outline',
-    link: '/pages/pet-timeline',
+    link: '/pages/axa-vietii',
   },
   // {
   //   title: 'Layout',

@@ -44,9 +44,14 @@ const routes: Routes = [{
     //     .then(m => m.ExtraComponentsModule),
     // },
     {
-      path: 'pet-timeline',
+      path: 'axa-vietii',
       loadChildren: () => import('./pet-timeline/pet-timeline.module')
         .then(m => m.PetTimelineModule),
+    },
+    {
+      path: 'articole',
+      loadChildren: () => import('./pet-articles/pet-articles.module')
+        .then(m => m.PetArticlesModule),
     },
     // {
     //   path: 'maps',

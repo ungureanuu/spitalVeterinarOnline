@@ -11,7 +11,7 @@ declare global {
   styleUrls: ['vertical-timeline.component.scss'],
 })
 
-export class VerticalTimelineComponent implements OnInit, AfterViewChecked{
+export class VerticalTimelineComponent implements OnInit{
   @ViewChild('timeline', {static: false}) container : ElementRef;
 
   public timelineItems = null;
@@ -61,50 +61,50 @@ export class VerticalTimelineComponent implements OnInit, AfterViewChecked{
     window.sr = ScrollReveal();
   };
 
-  ngAfterViewChecked() {
-    let elem = this.container.nativeElement;
-    if (elem.offsetWidth < 768) {
+  // ngAfterViewChecked() {
+  //   let elem = this.container.nativeElement;
+  //   if (elem.offsetWidth < 768) {
 
-      let timelineCnt = elem.classList.querySelector('.timeline-content');
-      if (timelineCnt.classList.contains('js--fadeInLeft')) {
-          timelineCnt.removeClass('js--fadeInLeft').addClass('js--fadeInRight')
-      }
-      window.sr.reveal('.js--fadeInRight', {
-        origin: 'right',
-        distance: '300px',
-        easing: 'ease-in-out',
-        duration: 800,
-      });
-    } else {
+  //     let timelineCnt = elem.classList.querySelector('.timeline-content');
+  //     if (timelineCnt.classList.contains('js--fadeInLeft')) {
+  //         timelineCnt.removeClass('js--fadeInLeft').addClass('js--fadeInRight')
+  //     }
+  //     window.sr.reveal('.js--fadeInRight', {
+  //       origin: 'right',
+  //       distance: '300px',
+  //       easing: 'ease-in-out',
+  //       duration: 800,
+  //     });
+  //   } else {
 
-      window.sr.reveal('.js--fadeInLeft', {
-        origin: 'left',
-        distance: '300px',
-    	  easing: 'ease-in-out',
-        duration: 800,
-      });
+  //     window.sr.reveal('.js--fadeInLeft', {
+  //       origin: 'left',
+  //       distance: '300px',
+  //   	  easing: 'ease-in-out',
+  //       duration: 800,
+  //     });
 
-      window.sr.reveal('.js--fadeInRight', {
-        origin: 'right',
-        distance: '300px',
-        easing: 'ease-in-out',
-        duration: 800,
-      });
-    }
-    window.sr.reveal('.js--fadeInLeft', {
-      origin: 'left',
-      distance: '300px',
-      easing: 'ease-in-out',
-      duration: 800,
-    });
+  //     window.sr.reveal('.js--fadeInRight', {
+  //       origin: 'right',
+  //       distance: '300px',
+  //       easing: 'ease-in-out',
+  //       duration: 800,
+  //     });
+  //   }
+  //   window.sr.reveal('.js--fadeInLeft', {
+  //     origin: 'left',
+  //     distance: '300px',
+  //     easing: 'ease-in-out',
+  //     duration: 800,
+  //   });
 
-    window.sr.reveal('.js--fadeInRight', {
-      origin: 'right',
-      distance: '300px',
-      easing: 'ease-in-out',
-      duration: 800,
-    });
+  //   window.sr.reveal('.js--fadeInRight', {
+  //     origin: 'right',
+  //     distance: '300px',
+  //     easing: 'ease-in-out',
+  //     duration: 800,
+  //   });
 
-  }
+  // }
 
 }
