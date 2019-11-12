@@ -19,6 +19,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { PetArticlesRoutingModule } from './pet-articles-routing.module';
 import { CustomMaterialModule } from '../shared/custom-material/custom-material.module';
 import { SharedModule } from '../shared/shared.module';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 
 // components
@@ -52,6 +53,7 @@ const MODULES = [
   PetArticlesRoutingModule,
   CustomMaterialModule,
   SharedModule,
+  NgxMasonryModule,
 ];
 
 @NgModule({
