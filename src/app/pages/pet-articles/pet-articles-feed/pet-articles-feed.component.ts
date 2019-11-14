@@ -8,7 +8,16 @@ import { NgxMasonryOptions } from 'ngx-masonry';
   styleUrls: ['pet-articles-feed.component.scss'],
 })
 export class PetArticlesFeedComponent implements OnInit {
-  public masonryOptions: NgxMasonryOptions = {
+	public masonryItems = [
+		{ title: 'item 1' },
+		{ title: 'item 2' },
+		{ title: 'item 3' },
+		{ title: 'item 4' },
+		{ title: 'item 5' },
+		{ title: 'item 6' }
+	  ];
+
+  	public masonryOptions: NgxMasonryOptions = {
 		transitionDuration: '0.2s',
 		gutter: 20,
 		resize: true,

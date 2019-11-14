@@ -15,7 +15,7 @@
       </div>
  </div>
 </ngx-masonry> -->
-<div class="masonry-demo">
+<!-- <div class="masonry-demo">
     <div class="links">
       <a href="https://github.com/gethinoakes/ngx-masonry" target="_blank">View on Github</a>
       <a class="github-button" href="https://github.com/gethinoakes/ngx-masonry" data-size="large" data-show-count="true" aria-label="Star gethinoakes/ngx-masonry on GitHub">Star</a>
@@ -30,4 +30,13 @@
   
     <button *ngIf="limit < 100" (click)="showMoreImages()">Show More Images</button>
     <h2 *ngIf="limit >= 100">No More Images</h2>
-  </div>
+  </div> -->
+<div class="masonry-demo">
+  <ngx-masonry [options]="masonryOptions" [useImagesLoaded]="true" class="ngx-masonry">
+    <div ngxMasonryItem class="masonry-item" *ngFor="let picture of masonryImages">
+      <img src="{{picture.picture}}">
+   </div>
+  </ngx-masonry>
+  <button *ngIf="limit < 100" (click)="showMoreImages()">Show More Images</button>
+  <h2 *ngIf="limit >= 100">No More Images</h2>
+</div>
