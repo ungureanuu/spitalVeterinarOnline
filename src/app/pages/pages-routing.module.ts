@@ -53,6 +53,11 @@ const routes: Routes = [{
       loadChildren: () => import('./pet-articles/pet-articles.module')
         .then(m => m.PetArticlesModule),
     },
+    {
+      path: 'articol/:id',
+      loadChildren: () => import('./pet-article-details/pet-article-details.module')
+        .then(m => m.PetArticleDetailsModule),
+    },
     // {
     //   path: 'maps',
     //   loadChildren: () => import('./maps/maps.module')
@@ -80,7 +85,7 @@ const routes: Routes = [{
     // },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'acasa',
       pathMatch: 'full',
     },
     {

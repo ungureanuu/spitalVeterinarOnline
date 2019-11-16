@@ -10,7 +10,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Acasa',
     icon: 'home-outline',
-    link: '/',
+    link: '/acasa',
   },
   {
     title: 'Servicii',
@@ -19,22 +19,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Axa Vietii',
     icon: 'message-circle-outline',
-    link: '/pages/axa-vietii',
+    link: '/axa-vietii',
   },
   {
     title: 'Articole',
     icon: 'grid-outline',
-    link: '/pages/articole',
+    link: '/articole',
   },
   {
     title: 'Intreaba medicul',
     icon: 'layout-outline',
-    link: '/pages/axa-vietii',
+    link: '/axa-vietii',
   },
   {
     title: 'Anunturi',
     icon: 'shopping-cart-outline',
-    link: '/pages/axa-vietii',
+    link: '/axa-vietii',
   },
   // {
   //   title: 'Layout',
