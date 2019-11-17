@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import ScrollReveal from 'scrollreveal';
+import { PetTimelineService } from '../pet-timeline.service';
 
 declare global {
   interface Window { sr: any; }
@@ -16,7 +17,9 @@ export class VerticalTimelineComponent implements OnInit{
 
   public timelineItems = null;
 
-  constructor() { };
+  constructor(
+    private petTimelineService: PetTimelineService
+  ) { };
 
   ngOnInit() {
     this.timelineItems = [
@@ -59,7 +62,25 @@ export class VerticalTimelineComponent implements OnInit{
     ];
     console.log('in pet timeline');
     window.sr = ScrollReveal();
+    this.petTimelineService.getTimeline().subscribe((res)=>{
+      console.log('response of timeline', res);
+    });      
   };
+
+  newTimmelineItem() {
+    let newItem = {
+            age:'2an',
+            animalType: 'soparla',
+            title: 'titlu',
+            picture: 'gdsgdsgdsgds',
+            subtitle: 'subtitlu',
+            descriptionText: 'descriere',
+            infoItems: ['ion', 'tiriac'] 
+    };
+    this.petTimelineService.newTimelineItem(newItem).subscribe((res)=>{
+      console.log('response of post', res);
+    });  
+  }
 
   // ngAfterViewChecked() {
   //   let elem = this.container.nativeElement;

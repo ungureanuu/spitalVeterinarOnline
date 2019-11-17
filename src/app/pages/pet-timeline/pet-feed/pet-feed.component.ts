@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NbCalendarRange, NbDateService } from '@nebular/theme';
 
 @Component({
   selector: 'app-pet-feed',
@@ -8,8 +7,10 @@ import { NbCalendarRange, NbDateService } from '@nebular/theme';
 })
 export class PetFeedComponent implements OnInit {
 
+  constructor(
+  ){}
+
   ngOnInit() {
-    console.log('in pet feed');
   }
 }
 

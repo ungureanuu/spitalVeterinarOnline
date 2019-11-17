@@ -20,14 +20,14 @@ import { PetTimelineRoutingModule } from './pet-timeline-routing.module';
 import { CustomMaterialModule } from '../shared/custom-material/custom-material.module';
 import { SharedModule } from '../shared/shared.module';
 
-
 // components
 import { PetTimelineComponent } from './pet-timeline.component';
 import { VerticalTimelineComponent } from './vertical-timeline/vertical-timeline.component';
 import { PetFilterComponent } from './pet-filter/pet-filter.component';
 import { PetFeedComponent } from './pet-feed/pet-feed.component';
 
-
+//services
+import { PetTimelineService } from './pet-timeline.service';
 
 const COMPONENTS = [
   PetTimelineComponent,
@@ -64,6 +64,7 @@ const MODULES = [
     ...COMPONENTS,
   ],
   providers: [
+    PetTimelineService,
     { provide: Window, useValue: window },
   ],
 })
