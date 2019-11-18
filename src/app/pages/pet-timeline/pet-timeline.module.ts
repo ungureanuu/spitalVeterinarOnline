@@ -18,13 +18,14 @@ import {
 import { ThemeModule } from '../../@theme/theme.module';
 import { PetTimelineRoutingModule } from './pet-timeline-routing.module';
 import { CustomMaterialModule } from '../shared/custom-material/custom-material.module';
-import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // components
 import { PetTimelineComponent } from './pet-timeline.component';
 import { VerticalTimelineComponent } from './vertical-timeline/vertical-timeline.component';
 import { PetFilterComponent } from './pet-filter/pet-filter.component';
 import { PetFeedComponent } from './pet-feed/pet-feed.component';
+import { DialogComponent } from '../shared/components/dialog/dialog.component';
 
 //services
 import { PetTimelineService } from './pet-timeline.service';
@@ -34,6 +35,7 @@ const COMPONENTS = [
   VerticalTimelineComponent,
   PetFilterComponent,
   PetFeedComponent,
+  DialogComponent
 ];
 
 const MODULES = [
@@ -53,7 +55,8 @@ const MODULES = [
   ThemeModule,
   PetTimelineRoutingModule,
   CustomMaterialModule,
-  SharedModule,
+  FormsModule, 
+  ReactiveFormsModule,
 ];
 
 @NgModule({
@@ -67,5 +70,6 @@ const MODULES = [
     PetTimelineService,
     { provide: Window, useValue: window },
   ],
+  entryComponents: [DialogComponent]
 })
 export class PetTimelineModule { }

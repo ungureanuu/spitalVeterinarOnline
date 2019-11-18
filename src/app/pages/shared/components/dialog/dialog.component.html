@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="form"> 
+    <mat-form-field>
+        <input matInput
+                placeholder="catel sau pisica"
+                formControlName="animalType">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="varsta"
+                formControlName="age">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="titlu"
+                formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="poze"
+                formControlName="picture">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="subtitlu"
+                formControlName="subtitle">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="descriere"
+                formControlName="descriptionText">
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

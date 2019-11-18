@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import ScrollReveal from 'scrollreveal';
 import { PetTimelineService } from '../pet-timeline.service';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import { DialogComponent } from '../../shared/components/dialog/dialog.component';
+
 
 declare global {
   interface Window { sr: any; }
@@ -18,7 +21,8 @@ export class VerticalTimelineComponent implements OnInit{
   public timelineItems = null;
 
   constructor(
-    private petTimelineService: PetTimelineService
+    private petTimelineService: PetTimelineService,
+    private dialog: MatDialog
   ) { };
 
   ngOnInit() {
@@ -81,6 +85,30 @@ export class VerticalTimelineComponent implements OnInit{
       console.log('response of post', res);
     });  
   }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.position = {
+      'top': '20%',
+      left: '40%'
+    };
+    dialogConfig.data = {
+      id: 1,
+      title: 'Adauga cart'
+  };
+
+    //this.dialog.open(DialogComponent, dialogConfig);
+
+    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+        data => console.log("Dialog output:", data)
+    );  
+}
 
   // ngAfterViewChecked() {
   //   let elem = this.container.nativeElement;
