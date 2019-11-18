@@ -12,19 +12,10 @@ export class DialogComponent implements OnInit {
   public form: FormGroup;
   public title: string;
 
-  public newTimelineItem = new FormGroup({
-        age: new FormControl(''),
-        animalType: new FormControl(''), 
-        title: new FormControl(''),
-        picture: new FormControl(''),
-        subtitle: new FormControl(''),
-        descriptionText: new FormControl(''),
-        infoItems: new FormArray([])
-  });
-  public animalType: string;
+  public animalTypes: Array<string>;
+  public infoItems: Array<string>;
 
     constructor(
-        private fb: FormBuilder,
         private dialogRef: MatDialogRef<DialogComponent>,
         @Inject(MAT_DIALOG_DATA) data) {
 
@@ -32,7 +23,9 @@ export class DialogComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.form = this.fb.group(this.newTimelineItem);
+        this.animalTypes = ['catel', 'pisica'];
+        this.infoItems = [''];
+        this.form = this.newTimelineItem();
     }
 
     save() {
@@ -41,5 +34,18 @@ export class DialogComponent implements OnInit {
 
     close() {
         this.dialogRef.close();
+    }
+
+    public newTimelineItem() {
+        return new FormGroup({
+            age: new FormControl(''),
+            animalType: new FormControl(''), 
+            timelineIndex: new FormControl(''),
+            title: new FormControl(''),
+            picture: new FormControl(''),
+            subtitle: new FormControl(''),
+            descriptionText: new FormControl(''),
+            infoItems: new FormArray([])
+      })
     }
 }
