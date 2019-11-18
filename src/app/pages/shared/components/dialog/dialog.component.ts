@@ -16,6 +16,7 @@ export class DialogComponent implements OnInit {
   public infoItems: Array<string>;
 
     constructor(
+        private fb: FormBuilder,
         private dialogRef: MatDialogRef<DialogComponent>,
         @Inject(MAT_DIALOG_DATA) data) {
 
@@ -47,5 +48,13 @@ export class DialogComponent implements OnInit {
             descriptionText: new FormControl(''),
             infoItems: new FormArray([])
       })
+    }
+
+    get addDynamicElement() {
+        return this.form.get('infoItems') as FormArray
+      }
+    
+    public addItems() {
+    this.addDynamicElement.push(this.fb.control(''))
     }
 }

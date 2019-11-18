@@ -1,6 +1,6 @@
 <div class="dialog-cnt">
     <h2 mat-dialog-title>{{title}}</h2>
-
+    <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addItems()">Add Items</button>
     <mat-dialog-content [formGroup]="form">     
         <mat-form-field class="form-field">
             <mat-select matInput formControlName="animalType" placeholder="catel sau pisica?">
@@ -24,13 +24,12 @@
                     placeholder="titlu"
                     formControlName="title">
         </mat-form-field>
-        <mat-form-field class="form-field">
-            <mat-select matInput formControlName="infoItems" placeholder="catel sau pisica?">
-                <mat-option *ngFor="let infoItem of infoItems" [value]="animalType">
-                    {{animalType}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        
+        
+            <mat-form-field class="form-field" *ngFor="let item of infoItems.controls; let i = index" formArrayName="infoItems">
+                <input matInput type="text" class="form-control" placeholder="item" formControlName="i">                  
+            </mat-form-field>
+       
         <mat-form-field class="form-field">
             <input matInput
                     placeholder="subtitlu"
