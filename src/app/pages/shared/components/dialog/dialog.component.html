@@ -23,10 +23,7 @@
             <input matInput
                     placeholder="titlu"
                     formControlName="title">
-        </mat-form-field>
-        <mat-form-field class="form-field" *ngFor="let item of infoItems.controls; let i = index" formArrayName="infoItems">
-            <input matInput type="text" class="form-control" placeholder="item" formControlName="i">                  
-        </mat-form-field>      
+        </mat-form-field> 
         <mat-form-field class="form-field">
             <input matInput
                     placeholder="subtitlu"
@@ -37,6 +34,18 @@
                     placeholder="poze"
                     formControlName="picture">
         </mat-form-field>
+        <!-- <div class="item-wrapper" formArrayName="infoItems">
+            <div class="form-field" *ngFor="let item of infoItems.controls; let i = index" >
+                <input type="text" class="form-control" placeholder="item" formControlName="i">                  
+            </div>    
+        </div> -->
+        <div formArrayName="infoItems" *ngFor="let ctrl of form.controls.infoItems.controls; let i = index;">
+            <div [formGroupName]="i">
+              <mat-form-field>
+                <input matInput placeholder="item" formControlName="name">
+              </mat-form-field>
+            </div>
+          </div>
         <mat-form-field class="form-field">
             <input matInput
                     placeholder="descriere"

@@ -93,7 +93,7 @@ export class VerticalTimelineComponent implements OnInit{
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.position = {
-      'top': '10%',
+      'top': '2%',
       left: '40%'
     };
     dialogConfig.data = {

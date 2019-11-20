@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ngx-dialog',
@@ -13,7 +13,10 @@ export class DialogComponent implements OnInit{
   public title: string;
 
   public animalTypes: Array<string>;
-  public infoItems: number;
+  public dataList = [
+    {name: ''},
+    {name: ''}
+  ]
 
     constructor(
         private fb: FormBuilder,
@@ -21,12 +24,27 @@ export class DialogComponent implements OnInit{
         @Inject(MAT_DIALOG_DATA) data) {
 
         this.title = data.title;
+        const formArray = this.fb.array([]);  
+
+        for (const data of this.dataList) {
+          formArray.push(
+            this.fb.group({name: new FormControl(data.name)})
+          );      
+        }
+        this.form = this.fb.group({
+          age: null,
+          animalType: null, 
+          timelineIndex: null,
+          title: null,
+          picture: null,
+          subtitle: null,
+          descriptionText: null,
+          infoItems: formArray,
+        })
     }
 
     ngOnInit() {
         this.animalTypes = ['catel', 'pisica'];
-        this.infoItems = 1;
-        this.form = this.newTimelineItem();
     }
 
     save() {
@@ -37,29 +55,12 @@ export class DialogComponent implements OnInit{
         this.dialogRef.close();
     }
 
-    public newTimelineItem() {
-        return new FormGroup({
-            age: new FormControl(''),
-            animalType: new FormControl(''), 
-            timelineIndex: new FormControl(''),
-            title: new FormControl(''),
-            picture: new FormControl(''),
-            subtitle: new FormControl(''),
-            descriptionText: new FormControl(''),
-            infoItems: this.fb.array([
-              this.addItems()
-            ])
-      })
+    get itemsArray(): FormArray {
+      return this.form.get('infoItems') as FormArray;
     }
-
-    get addDynamicElement() {
-        return this.form.get('infoItems') as FormArray
-    }
-    
+  
     public addItems() {
-    //this.addDynamicElement.push(this.fb.control(''))
-    return this.fb.group({
-      item: ['']
-    })
+      this.itemsArray.push(this.fb.group({name: new FormControl('')}))
+      
     }
 }
