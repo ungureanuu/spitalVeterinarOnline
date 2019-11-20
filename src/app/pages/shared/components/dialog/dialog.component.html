@@ -24,12 +24,9 @@
                     placeholder="titlu"
                     formControlName="title">
         </mat-form-field>
-        
-        
-            <mat-form-field class="form-field" *ngFor="let item of infoItems.controls; let i = index" formArrayName="infoItems">
-                <input matInput type="text" class="form-control" placeholder="item" formControlName="i">                  
-            </mat-form-field>
-       
+        <mat-form-field class="form-field" *ngFor="let item of infoItems.controls; let i = index" formArrayName="infoItems">
+            <input matInput type="text" class="form-control" placeholder="item" formControlName="i">                  
+        </mat-form-field>      
         <mat-form-field class="form-field">
             <input matInput
                     placeholder="subtitlu"

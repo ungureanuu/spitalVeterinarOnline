@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 
@@ -7,13 +7,13 @@ import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent implements OnInit{
 
   public form: FormGroup;
   public title: string;
 
   public animalTypes: Array<string>;
-  public infoItems: Array<string>;
+  public infoItems: number;
 
     constructor(
         private fb: FormBuilder,
@@ -25,7 +25,7 @@ export class DialogComponent implements OnInit {
 
     ngOnInit() {
         this.animalTypes = ['catel', 'pisica'];
-        this.infoItems = [''];
+        this.infoItems = 1;
         this.form = this.newTimelineItem();
     }
 
@@ -46,15 +46,20 @@ export class DialogComponent implements OnInit {
             picture: new FormControl(''),
             subtitle: new FormControl(''),
             descriptionText: new FormControl(''),
-            infoItems: new FormArray([])
+            infoItems: this.fb.array([
+              this.addItems()
+            ])
       })
     }
 
     get addDynamicElement() {
         return this.form.get('infoItems') as FormArray
-      }
+    }
     
     public addItems() {
-    this.addDynamicElement.push(this.fb.control(''))
+    //this.addDynamicElement.push(this.fb.control(''))
+    return this.fb.group({
+      item: ['']
+    })
     }
 }
