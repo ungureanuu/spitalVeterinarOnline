@@ -14,11 +14,19 @@
                         placeholder="pozitia in axa"
                         formControlName="timelineIndex">
             </mat-form-field>
-        <mat-form-field class="form-field">
-            <input matInput
-                    placeholder="varsta"
-                    formControlName="age">
-        </mat-form-field>
+        <div class="age-group" formGroupName="age">
+            <mat-form-field class="form-field">
+                <input matInput
+                        placeholder="varsta cifra"
+                        formControlName="value">
+            </mat-form-field>
+            <mat-form-field class="form-field">
+                <input matInput
+                        placeholder="varsta unitate"
+                        formControlName="unit">
+            </mat-form-field>
+        </div>
+        
         <mat-form-field class="form-field">
             <input matInput
                     placeholder="titlu"
@@ -42,7 +50,7 @@
         <div formArrayName="infoItems" *ngFor="let ctrl of form.controls.infoItems.controls; let i = index;">
             <div [formGroupName]="i">
               <mat-form-field>
-                <input matInput placeholder="item" formControlName="name">
+                <input matInput placeholder="item" formControlName="info">
               </mat-form-field>
             </div>
           </div>

@@ -4,7 +4,7 @@ $light-primary: #C5CAE9;
 $text: #FFFFFF;
 $primary-text: #212121;
 $secondary-text: #757575;
-$accent: #FF4081;
+$accent: #F6F6F6;
 $valueWord: ellipsis;
 
 section {
@@ -95,6 +95,10 @@ header {
 	}
 }
 
+.edit-btn {
+	padding-right: 10px;
+}
+
 
 .timeline-content {
 	position: relative;
@@ -117,7 +121,7 @@ header {
 	}
 }
 
-.timeline-img {
+.timeline-age {
 	width: 50px;
 	height: 50px;
 	background: $primary;
@@ -128,7 +132,7 @@ header {
 	margin-left: -15px;
 }
 
-.timeline-img:hover {
+.timeline-age:hover {
 	width: 100px;
 	height: 100px;
 	cursor: pointer;
@@ -136,11 +140,11 @@ header {
     z-index: 2;
 }
 
-.timeline-img:hover .timeline-value-cnt {
+.timeline-age:hover .timeline-value-cnt {
 	padding: 20% 10%;
 }
 
-.timeline-img:hover .timeline-value-word {	
+.timeline-age:hover .timeline-value-word {	
 	width: 100%;
     text-overflow: unset;
 }
@@ -183,7 +187,7 @@ a {
 
 }
 
-.timeline-card {
+.timeline-cart {
 	padding: 0!important;
 
 	p {
@@ -200,6 +204,14 @@ a {
 			background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0, .4)), url('https://picsum.photos/1000/800/?random') center center no-repeat;
 			background-size: cover;
 		}
+}
+
+.timeline-item-body {
+	padding: 10px 20px;
+}
+
+.timeline-item-desc {
+	margin-top: 20px;
 }
 
 .timeline-img-header {
@@ -225,12 +237,13 @@ blockquote {
 
 .date {
 	background: $accent;
-	display: inline-block;
+	display: inline-flex;
 	color: $text;
 	padding: 10px;
 	position: absolute;
 	top: 0;
 	right: 0;
+	z-index: 2;
 }
 
 @media screen and (max-width: 768px) {

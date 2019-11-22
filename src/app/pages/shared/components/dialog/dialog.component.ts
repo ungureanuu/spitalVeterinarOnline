@@ -10,12 +10,11 @@ import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@ang
 export class DialogComponent implements OnInit{
 
   public form: FormGroup;
-  public title: string;
-
+  public editCart = null;
   public animalTypes: Array<string>;
-  public dataList = [
-    {name: ''},
-    {name: ''}
+  public infoList = [
+    {info: ''},
+    {info: ''}
   ]
 
     constructor(
@@ -23,16 +22,20 @@ export class DialogComponent implements OnInit{
         private dialogRef: MatDialogRef<DialogComponent>,
         @Inject(MAT_DIALOG_DATA) data) {
 
-        this.title = data.title;
+        this.editCart = data;
+        if (this.editCart !== false) {
+          this.infoList = [];
+          this.infoList = data.infoItems;
+        }
         const formArray = this.fb.array([]);  
-
-        for (const data of this.dataList) {
+        for (const data of this.infoList) {
           formArray.push(
-            this.fb.group({name: new FormControl(data.name)})
+            this.fb.group({info: new FormControl(data.info)})
           );      
         }
         this.form = this.fb.group({
-          age: null,
+          id: null,
+          age: this.fb.group({value: null, unit: ''}),
           animalType: null, 
           timelineIndex: null,
           title: null,
@@ -45,10 +48,16 @@ export class DialogComponent implements OnInit{
 
     ngOnInit() {
         this.animalTypes = ['catel', 'pisica'];
+        if(this.editCart !== false) {
+          (<FormGroup>this.form)
+            .setValue(this.editCart, {onlySelf: true});
+        }
+
     }
 
     save() {
-        this.dialogRef.close(this.form.value);
+        let type = this.editCart !== false ? 'edit' : 'save';
+        this.dialogRef.close({type: type, data: this.form.value});
     }
 
     close() {
@@ -60,7 +69,7 @@ export class DialogComponent implements OnInit{
     }
   
     public addItems() {
-      this.itemsArray.push(this.fb.group({name: new FormControl('')}))
+      this.itemsArray.push(this.fb.group({info: new FormControl('')}))
       
     }
 }

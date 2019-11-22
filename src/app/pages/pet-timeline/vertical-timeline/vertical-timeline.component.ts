@@ -28,40 +28,66 @@ export class VerticalTimelineComponent implements OnInit{
   ngOnInit() {
     this.timelineItems = [
       {
-        age: 2,
-        Title: "Title",
-        Date: new Date(),
-        Description: "Lorem ipsum dolor sit amet",
+        id: 22,
+        age: {value: 1, unit: 'saptamana'},
+        animalType: 'pisica', 
+        timelineIndex: 0,
+        title: 'primul titlu',
+        picture: 'https://source.unsplash.com/433x649/?Uruguay',
+        subtitle: 'primul subtitle',
+        descriptionText: 'very short description',
+        infoItems: [
+          'lore ipsdum alot of times', 
+          'lore ipsdum alot of times', 
+          'lore ipsdum alot of times',
+          'lore ipsdum alot of times', 
+        ],
       },
       {
-        age: 2,
-        Title: "Title",
-        Date: new Date(),
-        Description: "Lorem ipsum dolor sit amet",
+        id: 22,
+        age: {value: 2, unit: 'saptamana'},
+        animalType: 'pisica', 
+        timelineIndex: 1,
+        title: 'al doilea titlu',
+        picture: 'https://source.unsplash.com/530x572/?Jamaica',
+        subtitle: 'al doilea subtitle',
+        descriptionText: 'very short description',
+        infoItems: [
+          'lore ipsdum alot of times', 
+          'lore ipsdum alot of times', 
+          'lore ipsdum alot of times'
+        ],
       },
       {
-        age: 2,
-        Title: "Title",
-        Date: new Date(),
-        Description: "Lorem ipsum dolor sit amet",
+        id: 22,
+        age: {value: 3, unit: 'saptamana'},
+        animalType: 'pisica', 
+        timelineIndex: 2,
+        title: 'al treilea titlu',
+        picture: 'https://source.unsplash.com/531x430/?Kuwait',
+        subtitle: 'al treilea subtitle',
+        descriptionText: 'very short description',
+        infoItems: [
+          'lore ipsdum alot of times', 
+          'lore ipsdum alot of times', 
+        ],
       },
       {
-        age: 2,
-        Title: "Title",
-        Date: new Date(),
-        Description: "Lorem ipsum dolor sit amet",
-      },
-      {
-        age: 2,
-        Title: "Title",
-        Date: new Date(),
-        Description: "Lorem ipsum dolor sit amet",
-      },
-      {
-        age: 2,
-        Title: "Title",
-        Date: new Date(),
-        Description: "Lorem ipsum dolor sit amet",
+        id: 22,
+        age: {value: 4, unit: 'saptamana'},
+        animalType: 'pisica', 
+        timelineIndex: 3,
+        title: 'al patrulea titlu',
+        picture: 'https://source.unsplash.com/586x1073/?Bermuda',
+        subtitle: 'al patrulea subtitle',
+        descriptionText: 'very short description',
+        infoItems: [
+          'lore ipsdum alot of times', 
+          'lore ipsdum alot of times', 
+          'lore ipsdum alot of times',
+          'lore ipsdum alot of times', 
+          'lore ipsdum alot of times'
+        ],
       }
     ];
     console.log('in pet timeline');
@@ -86,7 +112,7 @@ export class VerticalTimelineComponent implements OnInit{
     });  
   }
 
-  openDialog() {
+  openDialog(item) {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -96,11 +122,11 @@ export class VerticalTimelineComponent implements OnInit{
       'top': '2%',
       left: '40%'
     };
-    dialogConfig.data = {
-      id: 1,
-      title: 'Adauga cart'
-  };
-
+    if (item !== false) {
+      dialogConfig.data = item;
+    } else {
+      dialogConfig.data = false;
+    }
     //this.dialog.open(DialogComponent, dialogConfig);
 
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
@@ -110,50 +136,28 @@ export class VerticalTimelineComponent implements OnInit{
     );  
 }
 
-  // ngAfterViewChecked() {
-  //   let elem = this.container.nativeElement;
-  //   if (elem.offsetWidth < 768) {
+  public editCart(item) {
+    console.log('item for edit', item);
+    let zaItems = [];
+    item.infoItems.forEach(element => {
+      zaItems.push({info: element})
+    });
+    let editObj = {
+      id: item.id,
+      age: item.age,
+      animalType: item.animalType, 
+      timelineIndex: item.timelineIndex,
+      title: item.title,
+      picture: item.picture,
+      subtitle: item.subtitle,
+      descriptionText: item.descriptionText,
+      infoItems: zaItems,
+    }
+    this.openDialog(editObj);
+  }
 
-  //     let timelineCnt = elem.classList.querySelector('.timeline-content');
-  //     if (timelineCnt.classList.contains('js--fadeInLeft')) {
-  //         timelineCnt.removeClass('js--fadeInLeft').addClass('js--fadeInRight')
-  //     }
-  //     window.sr.reveal('.js--fadeInRight', {
-  //       origin: 'right',
-  //       distance: '300px',
-  //       easing: 'ease-in-out',
-  //       duration: 800,
-  //     });
-  //   } else {
+  public deleteCart(item) {
 
-  //     window.sr.reveal('.js--fadeInLeft', {
-  //       origin: 'left',
-  //       distance: '300px',
-  //   	  easing: 'ease-in-out',
-  //       duration: 800,
-  //     });
-
-  //     window.sr.reveal('.js--fadeInRight', {
-  //       origin: 'right',
-  //       distance: '300px',
-  //       easing: 'ease-in-out',
-  //       duration: 800,
-  //     });
-  //   }
-  //   window.sr.reveal('.js--fadeInLeft', {
-  //     origin: 'left',
-  //     distance: '300px',
-  //     easing: 'ease-in-out',
-  //     duration: 800,
-  //   });
-
-  //   window.sr.reveal('.js--fadeInRight', {
-  //     origin: 'right',
-  //     distance: '300px',
-  //     easing: 'ease-in-out',
-  //     duration: 800,
-  //   });
-
-  // }
+  }
 
 }

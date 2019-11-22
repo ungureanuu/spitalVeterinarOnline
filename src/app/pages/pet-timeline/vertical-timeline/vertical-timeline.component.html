@@ -1,137 +1,44 @@
 <section #timeline class="timeline">
   <div class="new-timeline-item-cnt">
-    <button (click)="openDialog()" class="new-timeline-item-btn">
+    <button (click)="openDialog(false)" class="new-timeline-item-btn">
       Adauga
     </button>
   </div>
   <div class="container">
     <div timeline-item class="timeline-item" *ngFor="let item of timelineItems; let even=even" >
-      <div class="timeline-img">
+      <div class="timeline-age">
         <div class="timeline-value-cnt">
           <div class="timeline-value-number">
-            {{item.age}}
+              {{item.age.value}}
           </div>
           <div class="timeline-value-word">
-            saptamana
+              {{item.age.unit}}
           </div>
         </div>
       </div>
-      <div class="timeline-content" [ngClass]="even===true ? 'js--fadeInLeft' : 'timeline-card js--fadeInRight'">
-        <div class="timeline-img-header" *ngIf="!even">
-          <h2>{{item.Title}}</h2>
+      <div class="timeline-content timeline-cart" [ngClass]="even===true ? 'js--fadeInLeft' : 'js--fadeInRight'">
+        <div class="date">
+          <div class="edit-btn" (click)="editCart(item)">
+            <img src="../../../../assets/icons/edit-24px.svg"/>
+          </div>
+          <div class="delete-btn" (click)="deleteCart(item)">
+              <img src="../../../../assets/icons/delete-24px.svg"/>
+          </div>
         </div>
-        <h2 *ngIf="even">{{item.Title}}</h2>
-        <div class="date">{{item.Date}}</div>
-        <p>{{item.Description}}</p>
+        <div class="timeline-img-header">
+          <h2>{{item.title}}</h2>
+        </div>
+        <div class="timeline-item-body">
+          <div class="timeline-items-cnt" *ngFor="let info of item.infoItems">
+              &#8226; {{info}}
+          </div>    
+          <div class="timeline-item-desc">
+            {{item.descriptionText}}
+          </div>  
+        </div>      
         <a class="bnt-more" href="javascript:void(0)">More</a>
       </div>
     </div> 
-
-
-    <!-- <div class="timeline-item">
-
-      <div class="timeline-img"></div>
-
-      <div class="timeline-content timeline-card js--fadeInRight">
-        <div class="timeline-img-header">
-          <h2>Card Title</h2>
-        </div>
-        <div class="date">25 MAY 2016</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
-        <a class="bnt-more" href="javascript:void(0)">More</a>
-      </div>
-
-    </div>   
-
-    <div class="timeline-item">
-
-      <div class="timeline-img"></div>
-
-      <div class="timeline-content js--fadeInLeft">
-        <div class="date">3 JUN 2016</div>
-        <h2>Quote</h2>
-        <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta explicabo debitis omnis dolor iste fugit totam quasi inventore!</blockquote>
-      </div>
-    </div>   
-
-    <div class="timeline-item">
-
-      <div class="timeline-img"></div>
-
-      <div class="timeline-content js--fadeInRight">
-        <h2>Title</h2>
-        <div class="date">22 JUN 2016</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
-        <a class="bnt-more" href="javascript:void(0)">More</a>
-      </div>
-    </div>   
-
-    <div class="timeline-item">
-
-      <div class="timeline-img"></div>
-
-      <div class="timeline-content timeline-card js--fadeInLeft">
-        <div class="timeline-img-header">
-          <h2>Card Title</h2>
-        </div>
-        <div class="date">10 JULY 2016</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
-        <a class="bnt-more" href="javascript:void(0)">More</a>
-      </div>
-    </div>   
-
-    <div class="timeline-item">
-
-      <div class="timeline-img"></div>
-
-      <div class="timeline-content timeline-card js--fadeInRight">
-        <div class="timeline-img-header">
-          <h2>Card Title</h2>
-        </div>
-        <div class="date">30 JULY 2016</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
-        <a class="bnt-more" href="javascript:void(0)">More</a>
-      </div>
-    </div>  
-
-    <div class="timeline-item">
-
-      <div class="timeline-img"></div>
-
-      <div class="timeline-content js--fadeInLeft">
-        <div class="date">5 AUG 2016</div>
-        <h2>Quote</h2>
-        <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta explicabo debitis omnis dolor iste fugit totam quasi inventore!</blockquote>
-      </div>
-    </div>   
-
-    <div class="timeline-item">
-
-      <div class="timeline-img"></div>
-
-      <div class="timeline-content timeline-card js--fadeInRight">
-        <div class="timeline-img-header">
-          <h2>Card Title</h2>
-        </div>
-        <div class="date">19 AUG 2016</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
-        <a class="bnt-more" href="javascript:void(0)">More</a>
-      </div>
-    </div>  
-
-    <div class="timeline-item">
-
-      <div class="timeline-img"></div>
-
-      <div class="timeline-content js--fadeInLeft">
-        <div class="date">1 SEP 2016</div>
-        <h2>Title</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
-        <a class="bnt-more" href="javascript:void(0)">More</a>
-      </div>
-    </div>    -->
-
-
 
   </div>
 </section>
