@@ -34,7 +34,7 @@ export class DialogComponent implements OnInit{
           );      
         }
         this.form = this.fb.group({
-          id: null,
+          _id: null,
           age: this.fb.group({value: null, unit: ''}),
           animalType: null, 
           timelineIndex: null,

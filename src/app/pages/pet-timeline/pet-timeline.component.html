@@ -1,2 +1,2 @@
-<app-pet-filter></app-pet-filter>
-<app-vertical-timeline></app-vertical-timeline>
+<app-pet-filter (animalTypeEmit)="getType($event)"></app-pet-filter>
+<app-vertical-timeline [animalType]="animalType"></app-vertical-timeline>

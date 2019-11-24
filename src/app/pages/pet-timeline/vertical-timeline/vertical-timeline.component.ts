@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef, Input, SimpleChanges } from '@angular/core';
 import ScrollReveal from 'scrollreveal';
 import { PetTimelineService } from '../pet-timeline.service';
 import {MatDialog, MatDialogConfig} from "@angular/material";
@@ -17,7 +17,7 @@ declare global {
 
 export class VerticalTimelineComponent implements OnInit{
   @ViewChild('timeline', {static: false}) container : ElementRef;
-
+  @Input() animalType: string
   public timelineItems = null;
 
   constructor(
@@ -26,76 +26,30 @@ export class VerticalTimelineComponent implements OnInit{
   ) { };
 
   ngOnInit() {
-    this.timelineItems = [
-      {
-        id: 22,
-        age: {value: 1, unit: 'saptamana'},
-        animalType: 'pisica', 
-        timelineIndex: 0,
-        title: 'primul titlu',
-        picture: 'https://source.unsplash.com/433x649/?Uruguay',
-        subtitle: 'primul subtitle',
-        descriptionText: 'very short description',
-        infoItems: [
-          'lore ipsdum alot of times', 
-          'lore ipsdum alot of times', 
-          'lore ipsdum alot of times',
-          'lore ipsdum alot of times', 
-        ],
-      },
-      {
-        id: 22,
-        age: {value: 2, unit: 'saptamana'},
-        animalType: 'pisica', 
-        timelineIndex: 1,
-        title: 'al doilea titlu',
-        picture: 'https://source.unsplash.com/530x572/?Jamaica',
-        subtitle: 'al doilea subtitle',
-        descriptionText: 'very short description',
-        infoItems: [
-          'lore ipsdum alot of times', 
-          'lore ipsdum alot of times', 
-          'lore ipsdum alot of times'
-        ],
-      },
-      {
-        id: 22,
-        age: {value: 3, unit: 'saptamana'},
-        animalType: 'pisica', 
-        timelineIndex: 2,
-        title: 'al treilea titlu',
-        picture: 'https://source.unsplash.com/531x430/?Kuwait',
-        subtitle: 'al treilea subtitle',
-        descriptionText: 'very short description',
-        infoItems: [
-          'lore ipsdum alot of times', 
-          'lore ipsdum alot of times', 
-        ],
-      },
-      {
-        id: 22,
-        age: {value: 4, unit: 'saptamana'},
-        animalType: 'pisica', 
-        timelineIndex: 3,
-        title: 'al patrulea titlu',
-        picture: 'https://source.unsplash.com/586x1073/?Bermuda',
-        subtitle: 'al patrulea subtitle',
-        descriptionText: 'very short description',
-        infoItems: [
-          'lore ipsdum alot of times', 
-          'lore ipsdum alot of times', 
-          'lore ipsdum alot of times',
-          'lore ipsdum alot of times', 
-          'lore ipsdum alot of times'
-        ],
-      }
-    ];
+    this.timelineItems = [ ];
     console.log('in pet timeline');
     window.sr = ScrollReveal();
-    this.petTimelineService.getTimeline().subscribe((res)=>{
+    this.petTimelineService.getTimeline('pisica').subscribe((res)=>{
+      this.timelineItems = res;
       console.log('response of timeline', res);
     });      
   };
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    this.typeChanged(changes.animalType.currentValue, changes.animalType.previousValue);
+    // You can also use categoryId.previousValue and 
+    // categoryId.firstChange for comparing old and new values
+
+}
+
+public typeChanged(newAnimalType, oldAnimalType) {
+  console.log(newAnimalType, oldAnimalType);
+  this.petTimelineService.getTimeline(newAnimalType).subscribe((res)=>{
+    this.timelineItems = res;
+    console.log('response of timeline', res);
+  });      
+}
 
   newTimmelineItem() {
     let newItem = {
@@ -132,7 +86,32 @@ export class VerticalTimelineComponent implements OnInit{
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-        data => console.log("Dialog output:", data)
+        data => {
+          let type = this.animalType ? this.animalType : 'pisica';
+          switch(data.type){
+            case 'save':
+                this.petTimelineService.newTimelineItem(data.data)
+                .subscribe((res)=>{
+                  console.log('response of post', res);
+                  this.petTimelineService.getTimeline(type).subscribe((res)=>{
+                    this.timelineItems = res;
+                    console.log('response of timeline', res);
+                  });      
+                });  
+              break;
+            case 'edit':
+                this.petTimelineService.editTimelineItem(data.data._id, data.data)
+                .subscribe((res)=>{
+                  console.log('response of edit', res);
+                  this.petTimelineService.getTimeline(type).subscribe((res)=>{
+                    this.timelineItems = res;
+                    console.log('response of timeline', res);
+                  });      
+                });  
+              break;
+            }
+          console.log("Dialog output:", data)
+        }
     );  
 }
 
@@ -143,7 +122,7 @@ export class VerticalTimelineComponent implements OnInit{
       zaItems.push({info: element})
     });
     let editObj = {
-      id: item.id,
+      _id: item._id,
       age: item.age,
       animalType: item.animalType, 
       timelineIndex: item.timelineIndex,
@@ -151,13 +130,20 @@ export class VerticalTimelineComponent implements OnInit{
       picture: item.picture,
       subtitle: item.subtitle,
       descriptionText: item.descriptionText,
-      infoItems: zaItems,
+      infoItems: item.infoItems,
     }
     this.openDialog(editObj);
   }
 
   public deleteCart(item) {
-
+    this.petTimelineService.deleteTimelineItem(item._id)
+    .subscribe((res)=>{
+      console.log('response of delete', res);
+      this.petTimelineService.getTimeline('pisica').subscribe((res)=>{
+        this.timelineItems = res;
+        console.log('response of timeline', res);
+      });      
+    });  
   }
 
 }

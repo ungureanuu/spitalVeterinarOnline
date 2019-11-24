@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatRadioChange } from '@angular/material';
+
 
 @Component({
   selector: 'app-pet-filter',
@@ -7,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PetFilterComponent implements OnInit {
 
+  @Output() animalTypeEmit = new EventEmitter();
+  public animalsList;
+  public animalType;
+
   ngOnInit() {
-    console.log('in pet filter');
+    this.animalsList = [
+      {type: 'pisica'},
+      {type: 'catel'}
+    ];
+    this.animalType = 'pisica';
   }
+
+  radioChange(event: MatRadioChange) {
+    console.log(event.value);
+    this.animalTypeEmit.emit(event.value);
+  }  
 }

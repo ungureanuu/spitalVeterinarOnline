@@ -1,6 +1,9 @@
-<section #petFilter class="pet-filter-cnt">
-    <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Pisicuta</mat-radio-button>
-        <mat-radio-button value="2">Catel</mat-radio-button>
-      </mat-radio-group>
-</section>
+<div class="pet-filter-cnt">
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="animalType">
+    <mat-radio-button 
+      *ngFor="let animal of animalsList" 
+      [value]="animal.type"
+      (change)="radioChange($event)">{{animal.type}}</mat-radio-button>
+  </mat-radio-group>
+  <!-- <div>radio group value: {{ radioGroup.value }}</div> -->
+</div>
