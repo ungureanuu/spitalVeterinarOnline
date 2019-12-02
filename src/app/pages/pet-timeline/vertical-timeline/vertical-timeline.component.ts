@@ -4,7 +4,6 @@ import { PetTimelineService } from '../pet-timeline.service';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 
-
 declare global {
   interface Window { sr: any; }
 };
@@ -56,7 +55,7 @@ public typeChanged(newAnimalType, oldAnimalType) {
             age:'2an',
             animalType: 'soparla',
             title: 'titlu',
-            picture: 'gdsgdsgdsgds',
+            picture: null,
             subtitle: 'subtitlu',
             descriptionText: 'descriere',
             infoItems: ['ion', 'tiriac'] 

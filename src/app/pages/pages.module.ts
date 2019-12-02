@@ -11,13 +11,13 @@ import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
+    SharedModule,
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
     DashboardModule,
     //ECommerceModule,
     MiscellaneousModule,
-    SharedModule,
   ],
   declarations: [
     PagesComponent,

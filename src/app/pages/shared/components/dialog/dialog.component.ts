@@ -1,6 +1,24 @@
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
+import { pipe } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
+import { requiredFileType } from '../file-upload/upload-file-validators';
+
+// export function uploadProgress<T>( cb: ( progress: number ) => void ) {
+//   return tap(( event: HttpEvent<T> ) => {
+//     if ( event.type === HttpEventType.UploadProgress ) {
+//       cb(Math.round((100 * event.loaded) / event.total));
+//     }
+//   });
+// }
+
+// export function toResponseBody<T>() {
+//   return pipe(
+//     filter(( event: HttpEvent<T> ) => event.type === HttpEventType.Response),
+//     map(( res: HttpResponse<T> ) => res.body)
+//   );
+// }
 
 @Component({
   selector: 'ngx-dialog',
@@ -15,7 +33,9 @@ export class DialogComponent implements OnInit{
   public infoList = [
     {info: ''},
     {info: ''}
-  ]
+  ];
+  public progress = 0;
+  public success = false;
 
     constructor(
         private fb: FormBuilder,
@@ -39,7 +59,7 @@ export class DialogComponent implements OnInit{
           animalType: null, 
           timelineIndex: null,
           title: null,
-          picture: null,
+          picture: new FormControl(null, [Validators.required, requiredFileType('png')]),
           subtitle: null,
           descriptionText: null,
           infoItems: formArray,
@@ -72,4 +92,22 @@ export class DialogComponent implements OnInit{
       this.itemsArray.push(this.fb.group({info: new FormControl('')}))
       
     }
+    
+}
+
+export function markAllAsDirty( form: FormGroup ) {
+  for ( const control of Object.keys(form.controls) ) {
+    form.controls[control].markAsDirty();
+  }
+}
+
+export function toFormData<T>( formValue: T ) {
+  const formData = new FormData();
+
+  for ( const key of Object.keys(formValue) ) {
+    const value = formValue[key];
+    formData.append(key, value);
+  }
+
+  return formData;
 }

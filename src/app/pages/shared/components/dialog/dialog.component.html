@@ -37,11 +37,14 @@
                     placeholder="subtitlu"
                     formControlName="subtitle">
         </mat-form-field>
-        <mat-form-field class="form-field">
+         <ngx-file-upload formControlName="picture"></ngx-file-upload>
+        <!-- <mat-form-field class="form-field">
             <input matInput
+                    type="file"
                     placeholder="poze"
-                    formControlName="picture">
-        </mat-form-field>
+                    formControlName="picture"
+                    (change)="onFileChange($event)">
+        </mat-form-field> -->
         <!-- <div class="item-wrapper" formArrayName="infoItems">
             <div class="form-field" *ngFor="let item of infoItems.controls; let i = index" >
                 <input type="text" class="form-control" placeholder="item" formControlName="i">                  
@@ -59,8 +62,7 @@
                     placeholder="descriere"
                     formControlName="descriptionText">
         </mat-form-field>
-    
-    
+        
     </mat-dialog-content>
     
     <mat-dialog-actions class="form-btns-wrapper">

@@ -25,7 +25,7 @@ import { PetTimelineComponent } from './pet-timeline.component';
 import { VerticalTimelineComponent } from './vertical-timeline/vertical-timeline.component';
 import { PetFilterComponent } from './pet-filter/pet-filter.component';
 import { PetFeedComponent } from './pet-feed/pet-feed.component';
-import { DialogComponent } from '../shared/components/dialog/dialog.component';
+//import { DialogComponent } from '../shared/components/dialog/dialog.component';
 
 //services
 import { PetTimelineService } from './pet-timeline.service';
@@ -34,8 +34,7 @@ const COMPONENTS = [
   PetTimelineComponent,
   VerticalTimelineComponent,
   PetFilterComponent,
-  PetFeedComponent,
-  DialogComponent
+  PetFeedComponent
 ];
 
 const MODULES = [
@@ -69,7 +68,6 @@ const MODULES = [
   providers: [
     PetTimelineService,
     { provide: Window, useValue: window },
-  ],
-  entryComponents: [DialogComponent]
+  ]
 })
 export class PetTimelineModule { }
