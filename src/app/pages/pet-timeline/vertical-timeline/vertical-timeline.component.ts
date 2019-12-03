@@ -3,10 +3,28 @@ import ScrollReveal from 'scrollreveal';
 import { PetTimelineService } from '../pet-timeline.service';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
+import { HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
+import { pipe } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
 
 declare global {
   interface Window { sr: any; }
 };
+
+export function uploadProgress<T>( cb: ( progress: number ) => void ) {
+  return tap(( event: HttpEvent<T> ) => {
+    if ( event.type === HttpEventType.UploadProgress ) {
+      cb(Math.round((100 * event.loaded) / event.total));
+    }
+  });
+}
+
+export function toResponseBody<T>() {
+  return pipe(
+    filter(( event: HttpEvent<T> ) => event.type === HttpEventType.Response),
+    map(( res: HttpResponse<T> ) => res.body)
+  );
+}
 
 @Component({
   selector: 'app-vertical-timeline',
@@ -90,7 +108,10 @@ public typeChanged(newAnimalType, oldAnimalType) {
           switch(data.type){
             case 'save':
                 this.petTimelineService.newTimelineItem(data.data)
-                .subscribe((res)=>{
+                .pipe(
+                  // uploadProgress(progress => (this.progress = progress)),
+                  toResponseBody()
+                ).subscribe((res)=>{
                   console.log('response of post', res);
                   this.petTimelineService.getTimeline(type).subscribe((res)=>{
                     this.timelineItems = res;

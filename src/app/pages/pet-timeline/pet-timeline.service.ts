@@ -17,8 +17,9 @@ export class PetTimelineService {
     }
 
     newTimelineItem(item) {
+        console.log('itemul vietii', item);
         let url = this.baseUrl + '/timeline/new';
-        return this.httpClient.post(url, item);
+        return this.httpClient.post(url, this.toFormData(item));
     }
 
     editTimelineItem(id, item) {
@@ -29,6 +30,16 @@ export class PetTimelineService {
     deleteTimelineItem(id): Observable<any> {
         let url = `${this.baseUrl}/timeline/delete/${id}`;
         return this.httpClient.delete(url, { headers: this.headers });
+    }
+
+    toFormData<T>( formValue: T ) {
+        const formData = new FormData();
+        for ( const key of Object.keys(formValue) ) {
+          const value = formValue[key];
+          formData.append(key, value);
+        }
+      
+        return formData;
     }
 
 }
