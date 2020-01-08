@@ -6,6 +6,9 @@ import { DialogComponent } from '../../shared/components/dialog/dialog.component
 import { HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
 import { pipe } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import { TimelineItemModel } from '../pet-timeline.models';
 
 declare global {
   interface Window { sr: any; }
@@ -39,33 +42,50 @@ export class VerticalTimelineComponent implements OnInit{
 
   constructor(
     private petTimelineService: PetTimelineService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer
   ) { };
 
   ngOnInit() {
     this.timelineItems = [ ];
-    console.log('in pet timeline');
+    console.log('in vertical timeline component');
     window.sr = ScrollReveal();
-    this.petTimelineService.getTimeline('pisica').subscribe((res)=>{
-      this.timelineItems = res;
-      console.log('response of timeline', res);
-    });      
+    // this.petTimelineService.getTimeline('pisica').subscribe((res)=>{
+    //   this.timelineItems = res;
+    //   console.log('response of timeline', res);
+    // });      
   };
 
   ngOnChanges(changes: SimpleChanges) {
-
     this.typeChanged(changes.animalType.currentValue, changes.animalType.previousValue);
     // You can also use categoryId.previousValue and 
     // categoryId.firstChange for comparing old and new values
-
 }
 
 public typeChanged(newAnimalType, oldAnimalType) {
   console.log(newAnimalType, oldAnimalType);
-  this.petTimelineService.getTimeline(newAnimalType).subscribe((res)=>{
-    this.timelineItems = res;
-    console.log('response of timeline', res);
-  });      
+  newAnimalType = newAnimalType !== undefined ? newAnimalType : 'pisica';
+  this.petTimelineService.getTimeline(newAnimalType)
+    .subscribe((res: TimelineItemModel[]) => {
+      for(let item of Object.keys(res)) {
+        this.timelineItems.push(this.mapResponse(res[item]))
+      };
+      console.log('response of timeline', this.timelineItems);
+    });      
+}
+
+public mapResponse(item) {
+  return {
+    _id: item._id,
+    age: JSON.parse(item.age),
+    animalType: item.animalType,
+    title: item.title,
+    picture: item.picture,
+    subtitle: item.subtitle,
+    descriptionText: item.descriptionText,
+    timelineIndex: item.timelineIndex,
+    infoItems: JSON.parse(item.infoItems)
+  }
 }
 
   newTimmelineItem() {
@@ -113,6 +133,7 @@ public typeChanged(newAnimalType, oldAnimalType) {
                   toResponseBody()
                 ).subscribe((res)=>{
                   console.log('response of post', res);
+                  debugger;
                   this.petTimelineService.getTimeline(type).subscribe((res)=>{
                     this.timelineItems = res;
                     console.log('response of timeline', res);
@@ -123,10 +144,14 @@ public typeChanged(newAnimalType, oldAnimalType) {
                 this.petTimelineService.editTimelineItem(data.data._id, data.data)
                 .subscribe((res)=>{
                   console.log('response of edit', res);
-                  this.petTimelineService.getTimeline(type).subscribe((res)=>{
-                    this.timelineItems = res;
-                    console.log('response of timeline', res);
-                  });      
+                  this.petTimelineService.getTimeline(type)          
+                  .subscribe((res: TimelineItemModel[]) => {
+                    this.timelineItems = [];
+                    for(let item of Object.keys(res)) {
+                      this.timelineItems.push(this.mapResponse(res[item]))
+                    };
+                    console.log('response of edited timeline', this.timelineItems);
+                  });   
                 });  
               break;
             }
@@ -159,11 +184,23 @@ public typeChanged(newAnimalType, oldAnimalType) {
     this.petTimelineService.deleteTimelineItem(item._id)
     .subscribe((res)=>{
       console.log('response of delete', res);
-      this.petTimelineService.getTimeline('pisica').subscribe((res)=>{
-        this.timelineItems = res;
-        console.log('response of timeline', res);
-      });      
+      this.petTimelineService.getTimeline('pisica')
+      .subscribe((res: TimelineItemModel[]) => {
+        this.timelineItems = [];
+        for(let item of Object.keys(res)) {
+          this.timelineItems.push(this.mapResponse(res[item]))
+        };
+        console.log('response of deleted timeline', this.timelineItems);
+      });        
     });  
   }
+
+  public transform(location, name){
+    location = location.replace('./', '/');
+    let url = "http://localhost:8080" + location + "/" + name
+     
+    return url;
+  }
+  
 
 }

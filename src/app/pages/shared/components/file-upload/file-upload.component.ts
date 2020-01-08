@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -13,8 +13,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
   styleUrls: ['./file-upload.component.scss']
 })
-export class FileUploadComponent implements ControlValueAccessor {
+export class FileUploadComponent implements ControlValueAccessor, OnInit {
   @Input() progress;
+  @Input() fileName;
+  @Output() changePictureEvent = new EventEmitter();
   onChange: Function;
   private file: File | null = null;
 
@@ -24,8 +26,9 @@ export class FileUploadComponent implements ControlValueAccessor {
     this.file = file;
   }
 
-  constructor( private host: ElementRef<HTMLInputElement> ) {
-  }
+  constructor( private host: ElementRef<HTMLInputElement> ) {}
+
+  ngOnInit() {}
 
   writeValue( value: null ) {
     // clear file input
@@ -38,6 +41,14 @@ export class FileUploadComponent implements ControlValueAccessor {
   }
 
   registerOnTouched( fn: Function ) {
+  }
+
+  changePicture() {
+    this.changePictureEvent.emit('change');
+  }
+
+  testFoo(event) {
+    debugger;
   }
 
 }

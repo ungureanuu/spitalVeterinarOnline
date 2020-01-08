@@ -3,6 +3,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
 import { requiredFileType } from '../file-upload/upload-file-validators';
 
+//Services
+import { PetTimelineService } from '../../../pet-timeline/pet-timeline.service';
+
 @Component({
   selector: 'ngx-dialog',
   templateUrl: './dialog.component.html',
@@ -21,6 +24,7 @@ export class DialogComponent implements OnInit{
   public success = false;
 
     constructor(
+        private petTimelineService: PetTimelineService,
         private fb: FormBuilder,
         private dialogRef: MatDialogRef<DialogComponent>,
         @Inject(MAT_DIALOG_DATA) data) {
@@ -42,7 +46,7 @@ export class DialogComponent implements OnInit{
           animalType: null, 
           timelineIndex: null,
           title: null,
-          picture: [null, [Validators.required, requiredFileType('png')]],
+          picture: [null, [Validators.required, requiredFileType('jpg')]],
           subtitle: null,
           descriptionText: null,
           infoItems: formArray,
@@ -55,7 +59,6 @@ export class DialogComponent implements OnInit{
           (<FormGroup>this.form)
             .setValue(this.editCart, {onlySelf: true});
         }
-
     }
 
     save() {
@@ -79,6 +82,27 @@ export class DialogComponent implements OnInit{
     public hasError( field: string, error: string ) {
       const control = this.form.get(field);
       return control.dirty && control.hasError(error);
+    }
+
+    public changePicture($event) {
+      let picture = this.form.get('picture');
+      if (!picture.value.location) {
+        
+        let data = {
+          _id: this.form.get('_id').value,
+          animalType: this.form.get('animalType').value,
+          picture: picture.value
+        };
+        debugger;
+        this.petTimelineService.changeItemPicture(data)
+        .subscribe((res)=>{
+          console.log('response of changed pic', res);
+          // this.petTimelineService.getTimeline(type).subscribe((res)=>{
+          //   this.timelineItems = res;
+          //   console.log('response of timeline', res);
+          // });      
+        });  
+      }
     }
     
 }

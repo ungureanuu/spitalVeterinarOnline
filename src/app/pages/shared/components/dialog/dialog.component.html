@@ -38,10 +38,15 @@
                     formControlName="subtitle">
         </mat-form-field>
         <div class="form-field">
-            <ngx-file-upload formControlName="picture" [progress]="progress"></ngx-file-upload>
+            <ngx-file-upload 
+                formControlName="picture" 
+                [progress]="progress" 
+                [fileName]="editCart ? editCart.picture.name : false"
+                (changePictureEvent)="changePicture($event)">
+            </ngx-file-upload>
             <div class="invalid-feedback" style="display: block">
                <ng-container *ngIf="hasError('picture', 'required')">This field is required</ng-container>
-               <ng-container *ngIf="hasError('picture', 'requiredFileType')">Only PNG 🤡</ng-container>
+               <ng-container *ngIf="hasError('picture', 'requiredFileType')">Only JPG 🤡</ng-container>
              </div>
         </div>
 
