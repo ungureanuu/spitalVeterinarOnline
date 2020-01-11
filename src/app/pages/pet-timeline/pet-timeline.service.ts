@@ -30,6 +30,9 @@ export class PetTimelineService {
 
     editTimelineItem(id, item) {
         let url = `${this.baseUrl}/timeline/edit/${id}`;
+        if (item.picture.location) {
+            item.picture = JSON.stringify(item.picture);
+        }
         item.age = JSON.stringify(item.age);
         item.infoItems = JSON.stringify(item.infoItems);
         return this.httpClient.put(url, item);

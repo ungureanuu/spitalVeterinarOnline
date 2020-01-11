@@ -80,7 +80,7 @@ public mapResponse(item) {
     age: JSON.parse(item.age),
     animalType: item.animalType,
     title: item.title,
-    picture: item.picture,
+    picture: JSON.parse(item.picture),
     subtitle: item.subtitle,
     descriptionText: item.descriptionText,
     timelineIndex: item.timelineIndex,

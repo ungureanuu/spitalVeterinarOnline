@@ -47,8 +47,4 @@ export class FileUploadComponent implements ControlValueAccessor, OnInit {
     this.changePictureEvent.emit('change');
   }
 
-  testFoo(event) {
-    debugger;
-  }
-
 }

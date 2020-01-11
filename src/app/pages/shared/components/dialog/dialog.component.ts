@@ -22,6 +22,7 @@ export class DialogComponent implements OnInit{
   ];
   public progress = 0;
   public success = false;
+  public oldPictureObj;
 
     constructor(
         private petTimelineService: PetTimelineService,
@@ -58,6 +59,7 @@ export class DialogComponent implements OnInit{
         if(this.editCart !== false) {
           (<FormGroup>this.form)
             .setValue(this.editCart, {onlySelf: true});
+            this.oldPictureObj = this.editCart.picture;
         }
     }
 
@@ -91,17 +93,18 @@ export class DialogComponent implements OnInit{
         let data = {
           _id: this.form.get('_id').value,
           animalType: this.form.get('animalType').value,
-          picture: picture.value
+          picture: picture.value,
+          oldPictureObj: this.oldPictureObj
         };
-        debugger;
         this.petTimelineService.changeItemPicture(data)
-        .subscribe((res)=>{
-          console.log('response of changed pic', res);
-          // this.petTimelineService.getTimeline(type).subscribe((res)=>{
-          //   this.timelineItems = res;
-          //   console.log('response of timeline', res);
-          // });      
-        });  
+          .subscribe((res : {status: string, data: any})=>{
+            if (res.status === 'success') {
+              let _id = res.data._id;
+              let pictureObj = res.data.picture
+              this.form.controls['picture'].setValue(pictureObj);
+              this.dialogRef.close({type: 'edit', data: this.form.value});
+            }     
+          });  
       }
     }
     
