@@ -54,7 +54,7 @@
             ]
           },
           "configurations": {
-            "production": {
+            "qual": {
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,

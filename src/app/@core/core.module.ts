@@ -11,8 +11,8 @@ import {
   // PlayerService,
   // StateService,
 } from './utils';
-import { UserData } from './data/users';
-import { PetTimelineData } from './data/pet-timeline';
+// import { UserData } from './data/users';
+// import { PetTimelineData } from './data/pet-timeline';
 // import { SmartTableData } from './data/smart-table';
 // import { UserActivityData } from './data/user-activity';
 // import { OrdersChartData } from './data/orders-chart';
@@ -31,8 +31,8 @@ import { PetTimelineData } from './data/pet-timeline';
 // import { VisitorsAnalyticsData } from './data/visitors-analytics';
 // import { SecurityCamerasData } from './data/security-cameras';
 
-import { UserService } from './mock/users.service';
-import { PetTimelineService } from './mock/pet-timeline.service';
+// import { UserService } from './mock/users.service';
+// import { PetTimelineService } from './mock/pet-timeline.service';
 // import { SmartTableService } from './mock/smart-table.service';
 // import { UserActivityService } from './mock/user-activity.service';
 // import { OrdersChartService } from './mock/orders-chart.service';
@@ -71,8 +71,8 @@ const socialLinks = [
 ];
 
 const DATA_SERVICES = [
-  { provide: UserData, useClass: UserService },
-  { provide: PetTimelineData, useClass: PetTimelineService },
+  // { provide: UserData, useClass: UserService },
+  // { provide: PetTimelineData, useClass: PetTimelineService },
 //   { provide: SmartTableData, useClass: SmartTableService },
 //   { provide: UserActivityData, useClass: UserActivityService },
 //   { provide: OrdersChartData, useClass: OrdersChartService },
@@ -92,56 +92,6 @@ const DATA_SERVICES = [
 //   { provide: SecurityCamerasData, useClass: SecurityCamerasService },
 ];
 
-export class NbSimpleRoleProvider extends NbRoleProvider {
-  getRole() {
-    // here you could provide any role based on any auth flow
-    return observableOf('guest');
-  }
-}
-
-export const NB_CORE_PROVIDERS = [
-  // ...MockDataModule.forRoot().providers,
-  ...DATA_SERVICES,
-  ...NbAuthModule.forRoot({
-
-    strategies: [
-      NbDummyAuthStrategy.setup({
-        name: 'email',
-        delay: 3000,
-      }),
-    ],
-    forms: {
-      login: {
-        socialLinks: socialLinks,
-      },
-      register: {
-        socialLinks: socialLinks,
-      },
-    },
-  }).providers,
-
-  NbSecurityModule.forRoot({
-    accessControl: {
-      guest: {
-        view: '*',
-      },
-      user: {
-        parent: 'guest',
-        create: '*',
-        edit: '*',
-        remove: '*',
-      },
-    },
-  }).providers,
-
-  {
-    provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
-  },
-  // AnalyticsService,
-  LayoutService,
-  // PlayerService,
-  // StateService,
-];
 
 @NgModule({
   imports: [
@@ -161,7 +111,6 @@ export class CoreModule {
     return <ModuleWithProviders>{
       ngModule: CoreModule,
       providers: [
-        ...NB_CORE_PROVIDERS,
       ],
     };
   }

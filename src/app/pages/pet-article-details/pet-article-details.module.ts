@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { ThemeModule } from '../../@theme/theme.module';
 import { PetArticleDetailsRoutingModule } from './pet-article-details-routing.module';
 import { CustomMaterialModule } from '../shared/custom-material/custom-material.module';
 import { SharedModule } from '../shared/shared.module';
@@ -16,7 +15,6 @@ const COMPONENTS = [
 ];
 
 const MODULES = [
-  ThemeModule,
   PetArticleDetailsRoutingModule,
   CustomMaterialModule,
   SharedModule,

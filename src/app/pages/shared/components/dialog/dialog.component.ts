@@ -75,6 +75,10 @@ export class DialogComponent implements OnInit{
     get itemsArray(): FormArray {
       return this.form.get('infoItems') as FormArray;
     }
+
+    public getControls() {
+      return (this.form.get('infoItems') as FormArray).controls;
+    }
   
     public addItems() {
       this.itemsArray.push(this.fb.group({info: new FormControl('')}))

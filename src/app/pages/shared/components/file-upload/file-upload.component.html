@@ -1,7 +1,7 @@
 <div class="file-drop-area">
   <span class="fake-btn">Alege fotografie</span>
   <span class="file-msg">{{fileName ? fileName : 'sau drag and drop aici' }}</span>
-  <input class="file-input" type="file" (ngModelChange)="testFoo($event)">
+  <input class="file-input" type="file">
 </div>
 <div class="change-picture" *ngIf="fileName">
   <button (click)="changePicture()">schimba imaginea</button>

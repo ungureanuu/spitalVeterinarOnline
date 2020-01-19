@@ -15,9 +15,9 @@ import {
   NbTabsetModule,
 } from '@nebular/theme';
 
-import { ThemeModule } from '../../@theme/theme.module';
 import { PetTimelineRoutingModule } from './pet-timeline-routing.module';
 import { CustomMaterialModule } from '../shared/custom-material/custom-material.module';
+import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // components
@@ -51,9 +51,9 @@ const MODULES = [
   NbSelectModule,
   NbSpinnerModule,
   NbTabsetModule,
-  ThemeModule,
   PetTimelineRoutingModule,
   CustomMaterialModule,
+  SharedModule,
   FormsModule, 
   ReactiveFormsModule,
 ];

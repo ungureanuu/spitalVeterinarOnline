@@ -15,7 +15,6 @@ import {
   NbTabsetModule,
 } from '@nebular/theme';
 
-import { ThemeModule } from '../../@theme/theme.module';
 import { PetArticlesRoutingModule } from './pet-articles-routing.module';
 import { CustomMaterialModule } from '../shared/custom-material/custom-material.module';
 import { SharedModule } from '../shared/shared.module';
@@ -49,7 +48,6 @@ const MODULES = [
   NbSelectModule,
   NbSpinnerModule,
   NbTabsetModule,
-  ThemeModule,
   PetArticlesRoutingModule,
   CustomMaterialModule,
   SharedModule,

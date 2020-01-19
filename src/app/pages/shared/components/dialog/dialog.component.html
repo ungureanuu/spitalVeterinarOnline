@@ -1,5 +1,5 @@
 <div class="dialog-cnt">
-    <h2 mat-dialog-title>{{title}}</h2>
+    <!-- <h2 mat-dialog-title>{{title}}</h2> -->
     <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addItems()">Add Items</button>
     <mat-dialog-content [formGroup]="form">     
         <mat-form-field class="form-field">
@@ -62,7 +62,7 @@
                 <input type="text" class="form-control" placeholder="item" formControlName="i">                  
             </div>    
         </div> -->
-        <div formArrayName="infoItems" *ngFor="let ctrl of form.controls.infoItems.controls; let i = index;">
+        <div formArrayName="infoItems" *ngFor="let ctrl of getControls(); let i = index;">
             <div [formGroupName]="i">
               <mat-form-field>
                 <input matInput placeholder="item" formControlName="info">

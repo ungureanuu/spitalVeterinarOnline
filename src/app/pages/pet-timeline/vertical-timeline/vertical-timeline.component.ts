@@ -35,9 +35,9 @@ export function toResponseBody<T>() {
   styleUrls: ['vertical-timeline.component.scss'],
 })
 
-export class VerticalTimelineComponent implements OnInit{
+export class VerticalTimelineComponent implements OnInit {
   @ViewChild('timeline', {static: false}) container : ElementRef;
-  @Input() animalType: string
+  @Input() animalType: string;
   public timelineItems = null;
 
   constructor(
