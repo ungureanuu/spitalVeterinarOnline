@@ -10,9 +10,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { TimelineItemModel } from '../pet-timeline.models';
 
-declare global {
-  interface Window { sr: any; }
-};
+// declare global {
+//   interface Window { sr: any; }
+// };
 
 export function uploadProgress<T>( cb: ( progress: number ) => void ) {
   return tap(( event: HttpEvent<T> ) => {
@@ -49,7 +49,7 @@ export class VerticalTimelineComponent implements OnInit {
   ngOnInit() {
     this.timelineItems = [ ];
     console.log('in vertical timeline component');
-    window.sr = ScrollReveal();
+    // window.sr = ScrollReveal();
     // this.petTimelineService.getTimeline('pisica').subscribe((res)=>{
     //   this.timelineItems = res;
     //   console.log('response of timeline', res);

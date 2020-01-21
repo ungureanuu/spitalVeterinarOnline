@@ -66,8 +66,7 @@ const MODULES = [
     ...COMPONENTS,
   ],
   providers: [
-    PetTimelineService,
-    { provide: Window, useValue: window },
+    PetTimelineService
   ]
 })
 export class PetTimelineModule { }

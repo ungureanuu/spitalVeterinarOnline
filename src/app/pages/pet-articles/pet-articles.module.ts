@@ -61,8 +61,6 @@ const MODULES = [
   declarations: [
     ...COMPONENTS,
   ],
-  providers: [
-    { provide: Window, useValue: window },
-  ],
+  providers: [],
 })
 export class PetArticlesModule { }
