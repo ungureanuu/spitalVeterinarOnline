@@ -18,10 +18,10 @@
       </div>
       <div class="timeline-content timeline-cart" [ngClass]="even===true ? 'js--fadeInLeft' : 'js--fadeInRight'">
         <div class="date">
-          <div class="edit-btn" (click)="editCart(item)">
+          <div class="timeline-action-btn edit-btn" (click)="editCart(item)">
             <img src="../../../../assets/icons/edit-24px.svg"/>
           </div>
-          <div class="delete-btn" (click)="deleteCart(item)">
+          <div class="timeline-action-btn delete-btn" (click)="deleteCart(item)">
               <img src="../../../../assets/icons/delete-24px.svg"/>
           </div>
         </div>
