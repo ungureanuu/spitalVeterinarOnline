@@ -1,0 +1,45 @@
+<section #timeline class="timeline">
+  <div class="new-timeline-item-cnt">
+    <button (click)="openDialog(false)" class="new-timeline-item-btn">
+      Adauga
+    </button>
+  </div>
+  <div class="container">
+    <div timeline-item class="timeline-item" *ngFor="let item of timelineItems; let even=even" >
+      <div class="timeline-age">
+        <div class="timeline-value-cnt">
+          <div class="timeline-value-number">
+              {{item.age.value}}
+          </div>
+          <div class="timeline-value-word">
+              {{item.age.unit}}
+          </div>
+        </div>
+      </div>
+      <div class="timeline-content timeline-cart" [ngClass]="even===true ? 'js--fadeInLeft' : 'js--fadeInRight'">
+        <div class="date">
+          <div class="timeline-action-btn edit-btn" (click)="editCart(item)">
+            <img src="../../../../assets/icons/edit-24px.svg"/>
+          </div>
+          <div class="timeline-action-btn delete-btn" (click)="deleteCart(item)">
+              <img src="../../../../assets/icons/delete-24px.svg"/>
+          </div>
+        </div>
+        <div class="timeline-img-header">
+          <img class="item-image" [src]='transform(item.picture.location, item.picture.name)'>
+          <h2>{{item.title}}</h2>
+        </div>
+        <div class="timeline-item-body">
+          <div class="timeline-items-cnt" *ngFor="let info of item.infoItems">
+              &#8226; {{info.info}}
+          </div>    
+          <div class="timeline-item-desc">
+            {{item.descriptionText}}
+          </div>  
+        </div>      
+        <a class="bnt-more" href="javascript:void(0)">More</a>
+      </div>
+    </div> 
+
+  </div>
+</section>

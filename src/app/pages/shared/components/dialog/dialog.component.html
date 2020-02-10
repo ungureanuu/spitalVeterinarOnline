@@ -1,0 +1,89 @@
+<div class="dialog-cnt">
+    <!-- <h2 mat-dialog-title>{{title}}</h2> -->
+    <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addItems()">Add Items</button>
+    <mat-dialog-content [formGroup]="form">     
+        <mat-form-field class="form-field">
+            <mat-select matInput formControlName="animalType" placeholder="catel sau pisica?">
+                <mat-option *ngFor="let animalType of animalTypes" [value]="animalType">
+                    {{animalType}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+                <input matInput
+                        placeholder="pozitia in axa"
+                        formControlName="timelineIndex">
+            </mat-form-field>
+        <div class="age-group" formGroupName="age">
+            <mat-form-field class="form-field">
+                <input matInput
+                        placeholder="varsta cifra"
+                        formControlName="value">
+            </mat-form-field>
+            <mat-form-field class="form-field">
+                <input matInput
+                        placeholder="varsta unitate"
+                        formControlName="unit">
+            </mat-form-field>
+        </div>
+        
+        <mat-form-field class="form-field">
+            <input matInput
+                    placeholder="titlu"
+                    formControlName="title">
+        </mat-form-field> 
+        <mat-form-field class="form-field">
+            <input matInput
+                    placeholder="subtitlu"
+                    formControlName="subtitle">
+        </mat-form-field>
+        <div class="form-field">
+            <ngx-file-upload 
+                formControlName="picture" 
+                [progress]="progress" 
+                [fileName]="editCart ? editCart.picture.name : false"
+                (changePictureEvent)="changePicture($event)">
+            </ngx-file-upload>
+            <div class="invalid-feedback" style="display: block">
+               <ng-container *ngIf="hasError('picture', 'required')">This field is required</ng-container>
+               <ng-container *ngIf="hasError('picture', 'requiredFileType')">Only JPG 🤡</ng-container>
+             </div>
+        </div>
+
+        <!-- <mat-form-field class="form-field">
+            <input matInput
+                    type="file"
+                    placeholder="poze"
+                    formControlName="picture"
+                    (change)="onFileChange($event)">
+        </mat-form-field> -->
+        <!-- <div class="item-wrapper" formArrayName="infoItems">
+            <div class="form-field" *ngFor="let item of infoItems.controls; let i = index" >
+                <input type="text" class="form-control" placeholder="item" formControlName="i">                  
+            </div>    
+        </div> -->
+        <div formArrayName="infoItems" *ngFor="let ctrl of getControls(); let i = index;">
+            <div [formGroupName]="i">
+              <mat-form-field>
+                <input matInput placeholder="item" formControlName="info">
+              </mat-form-field>
+            </div>
+          </div>
+        <mat-form-field class="form-field">
+            <input matInput
+                    placeholder="descriere"
+                    formControlName="descriptionText">
+        </mat-form-field>
+        
+    </mat-dialog-content>
+    
+    <mat-dialog-actions class="form-btns-wrapper">
+        <button class="mat-raised-button form-bnt"(click)="close()">Close</button>
+        <button class="mat-raised-button mat-primary form-bnt"(click)="save()">Save</button>
+    
+        <!-- <button type="submit" [disabled]="contactForm.pristine">Save</button>
+        <button type="reset" (click)="revert()" [disabled]="contactForm.pristine">
+            Revert
+        </button> -->
+    </mat-dialog-actions>
+</div>

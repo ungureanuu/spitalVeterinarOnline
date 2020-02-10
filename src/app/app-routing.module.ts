@@ -11,41 +11,49 @@ import {
 
 const routes: Routes = [
   {
-    path: 'pages',
-    loadChildren: () => import('app/pages/pages.module')
+    path: '',
+    loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
+  // {
+  //   path: 'admin',
+  //   loadChildren: './modules/admin/admin.module#AdminModule'
+  // },
   {
-    path: 'auth',
-    component: NbAuthComponent,
-    children: [
-      {
-        path: '',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'login',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'register',
-        component: NbRegisterComponent,
-      },
-      {
-        path: 'logout',
-        component: NbLogoutComponent,
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
-    ],
+    path: 'login',
+    loadChildren: './pages/authentication/auth.module#AuthModule'
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  // {
+  //   path: 'auth',
+  //   component: NbAuthComponent,
+  //   children: [
+  //     {
+  //       path: '',
+  //       component: NbLoginComponent,
+  //     },
+  //     {
+  //       path: 'login',
+  //       component: NbLoginComponent,
+  //     },
+  //     {
+  //       path: 'register',
+  //       component: NbRegisterComponent,
+  //     },
+  //     {
+  //       path: 'logout',
+  //       component: NbLogoutComponent,
+  //     },
+  //     {
+  //       path: 'request-password',
+  //       component: NbRequestPasswordComponent,
+  //     },
+  //     {
+  //       path: 'reset-password',
+  //       component: NbResetPasswordComponent,
+  //     },
+  //   ],
+  // },
+  { path: '', redirectTo: 'acasa', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },
 ];
 

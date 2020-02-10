@@ -29,32 +29,16 @@ import {
   InteractiveProgressBarComponent,
 } from './progress-bar/interactive-progress-bar/interactive-progress-bar.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { AlertComponent } from './alert/alert.component';
-import { ChatComponent } from './chat/chat.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { DayCellComponent } from './calendar/day-cell/day-cell.component';
-import { NebularFormInputsComponent } from './form-inputs/nebular-form-inputs.component';
-import { NebularSelectComponent } from './form-inputs/nebular-select/nebular-select.component';
-import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calendar-kit.component';
-import { CalendarKitMonthCellComponent } from './calendar-kit/month-cell/month-cell.component';
 
 const COMPONENTS = [
   ExtraComponentsComponent,
-  AlertComponent,
   ProgressBarComponent,
   InteractiveProgressBarComponent,
   SpinnerComponent,
   SpinnerColorComponent,
   SpinnerSizesComponent,
   SpinnerInButtonsComponent,
-  SpinnerInTabsComponent,
-  CalendarComponent,
-  DayCellComponent,
-  ChatComponent,
-  NebularFormInputsComponent,
-  NebularSelectComponent,
-  CalendarKitFullCalendarShowcaseComponent,
-  CalendarKitMonthCellComponent,
+  SpinnerInTabsComponent
 ];
 
 const MODULES = [

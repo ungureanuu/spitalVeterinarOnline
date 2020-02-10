@@ -1,0 +1,54 @@
+<!-- <ngx-masonry>
+  <div ngxMasonryItem class="masonry-item" *ngFor="let item of masonryItems">
+      <img class="img-pic" src="http://www.petsworld.in/blog/wp-content/uploads/2014/09/adorable-cat.jpg">
+      <div class="img-desc-wrap">
+          <div class="title ng-binding">
+              A beautiful sunshine
+          </div>
+          <div class="uploaded-date ng-binding">
+              Uploaded on : Fri Sep 27 2019
+          </div>
+          <div class="likes-watch-wrap">
+              <div class="likes ng-binding"><span class="icon-like"></span> 30</div>
+              <div class="watch ng-binding"><span class="icon-watch"></span> 204</div>
+          </div>
+      </div>
+ </div>
+</ngx-masonry> -->
+<!-- <div class="masonry-demo">
+    <div class="links">
+      <a href="https://github.com/gethinoakes/ngx-masonry" target="_blank">View on Github</a>
+      <a class="github-button" href="https://github.com/gethinoakes/ngx-masonry" data-size="large" data-show-count="true" aria-label="Star gethinoakes/ngx-masonry on GitHub">Star</a>
+    </div>
+    <h1>Ngx Masonry Demo</h1>
+  
+    <ngx-masonry [options]="masonryOptions" [useImagesLoaded]="true" class="ngx-masonry">
+      <div *ngFor="let picture of masonryImages" class="masonry-item">
+        <img src="{{picture.picture}}">
+      </div>
+    </ngx-masonry>
+  
+    <button *ngIf="limit < 100" (click)="showMoreImages()">Show More Images</button>
+    <h2 *ngIf="limit >= 100">No More Images</h2>
+  </div> -->
+<div class="masonry-demo">
+  <ngx-masonry [options]="masonryOptions" [useImagesLoaded]="true" class="ngx-masonry">
+    <div ngxMasonryItem class="masonry-item" *ngFor="let picture of masonryImages" (click)="goToDetails(picture.id)">
+      <img src="{{picture.picture}}">
+      <div class="img-desc-wrap">
+        <div class="title ng-binding">
+            Lets play hide and seek
+        </div>
+        <div class="uploaded-date ng-binding">
+            Uploaded on : Wed Oct 23 2019
+        </div>
+        <div class="likes-watch-wrap">
+            <div class="likes ng-binding"><span class="icon-like"></span> 51</div>
+            <div class="watch ng-binding"><span class="icon-watch"></span> 1015</div>
+        </div>
+      </div>
+   </div>
+  </ngx-masonry>
+  <button *ngIf="limit < 100" (click)="showMoreImages()">Show More Images</button>
+  <h2 *ngIf="limit >= 100">No More Images</h2>
+</div>

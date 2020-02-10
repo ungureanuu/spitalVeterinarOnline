@@ -5,4 +5,5 @@
  */
 export const environment = {
   production: true,
+  baseUrl: 'http://smartvetserverpipelined-env.wpm7ygt3iv.eu-central-1.elasticbeanstalk.com/api'  
 };

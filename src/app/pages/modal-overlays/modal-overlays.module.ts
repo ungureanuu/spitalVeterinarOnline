@@ -14,8 +14,8 @@ import {
 } from '@nebular/theme';
 
 // modules
-import { ThemeModule } from '../../@theme/theme.module';
 import { ModalOverlaysRoutingModule } from './modal-overlays-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 // components
 import { ModalOverlaysComponent } from './modal-overlays.component';
@@ -59,7 +59,6 @@ const ENTRY_COMPONENTS = [
 
 const MODULES = [
   FormsModule,
-  ThemeModule,
   ModalOverlaysRoutingModule,
   NbDialogModule.forChild(),
   NbWindowModule.forChild(),
@@ -71,6 +70,7 @@ const MODULES = [
   NbInputModule,
   NbSelectModule,
   NbTooltipModule,
+  SharedModule
 ];
 
 const SERVICES = [
