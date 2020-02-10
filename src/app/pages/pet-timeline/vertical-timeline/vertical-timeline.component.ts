@@ -197,7 +197,7 @@ public mapResponse(item) {
 
   public transform(location, name){
     location = location.replace('./', '/');
-    let url = "http://localhost:8080" + location + "/" + name
+    let url = "http://smartvetserverpipelined-env.wpm7ygt3iv.eu-central-1.elasticbeanstalk.com/" + location + "/" + name
      
     return url;
   }

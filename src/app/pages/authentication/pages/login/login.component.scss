@@ -1,115 +1,115 @@
-@import "../../../../stylesheets/reset";
-@import "../../../../stylesheets/buttons";
+// @import "../../../../stylesheets/reset";
+// @import "../../../../stylesheets/buttons";
 
-// login__card
+// // login__card
 
-// .my-btn {
-//     @extend .transparent-btn;
+// // .my-btn {
+// //     @extend .transparent-btn;
+// // }
+
+// .background {
+//     background: url('/assets/loginBackground/loginBack.png') no-repeat center center fixed;
+//     -webkit-background-size: cover;
+//     -moz-background-size: cover;
+//     -o-background-size: cover;
+//     background-size: cover;
+
+//     height:100vh;
 // }
 
-.background {
-    background: url('/assets/loginBackground/loginBack.png') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+// .flexcontainer{
+//     display: flex;
+// }
 
-    height:100vh;
-}
+// .bigitem {
+//     flex: 2 0 0;
+//     height: 100vh;
+// }
 
-.flexcontainer{
-    display: flex;
-}
+// .smallitem {
+//     display: flex;
+//     flex: 1.5 0 0;
+//     background-color: rgba(84, 8, 129, 0.64);
+//     flex-direction: column;
+// }
 
-.bigitem {
-    flex: 2 0 0;
-    height: 100vh;
-}
+// .signin-details {
+//     width: 500px;
+//     padding: 30px;
+//     margin: auto;
+// }
 
-.smallitem {
-    display: flex;
-    flex: 1.5 0 0;
-    background-color: rgba(84, 8, 129, 0.64);
-    flex-direction: column;
-}
+// .customInput{
+//     width: 400px;
+//     margin-bottom:10px;
+//     color:#CCCDCE;
+// }
 
-.signin-details {
-    width: 500px;
-    padding: 30px;
-    margin: auto;
-}
+// .customInput:focus{
+//     color:white;
+// }
 
-.customInput{
-    width: 400px;
-    margin-bottom:10px;
-    color:#CCCDCE;
-}
+// .loginLink{
+//     color: rgba(41,213,255,1);
+// }
 
-.customInput:focus{
-    color:white;
-}
+// .forgotPass{
+//     font-size: 15px;
+// }
 
-.loginLink{
-    color: rgba(41,213,255,1);
-}
+// .forgotPassDiv{
+//     text-align: right;
+// }
 
-.forgotPass{
-    font-size: 15px;
-}
+// .halfCol{
+//     width:50%;
+// }
 
-.forgotPassDiv{
-    text-align: right;
-}
+// .privTerms{
+//     font-size: 13px;
+//     text-align: center;
+//     color: white;
+//     padding-bottom:20px;
+// }
 
-.halfCol{
-    width:50%;
-}
+// .customNavbarBrandLogin {
+//     height: 55px;
+//     margin-bottom: 30px;
+// }
 
-.privTerms{
-    font-size: 13px;
-    text-align: center;
-    color: white;
-    padding-bottom:20px;
-}
+// .centeredElement {
+//     position: relative;
+//     left: 50%;
+//     -webkit-transform: translate(-50%, 0%);
+//     transform: translate(-50%, 0%);
+// }
 
-.customNavbarBrandLogin {
-    height: 55px;
-    margin-bottom: 30px;
-}
+// .login-card{
+//     background-color: transparent;
+//     box-shadow: none;
+// }
 
-.centeredElement {
-    position: relative;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
-}
+// .login-btn{
+//     width:408px;
+// }
 
-.login-card{
-    background-color: transparent;
-    box-shadow: none;
-}
+// .additionalActions{
+//     margin-top:5px;
+//     margin-bottom:15px;
+// }
 
-.login-btn{
-    width:408px;
-}
-
-.additionalActions{
-    margin-top:5px;
-    margin-bottom:15px;
-}
-
-/* Change Autocomplete styles in Chrome*/
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: none;
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 0px transparent inset;
-  transition: background-color 50000s ease-in-out 0s;
-}
+// /* Change Autocomplete styles in Chrome*/
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover, 
+// input:-webkit-autofill:focus
+// textarea:-webkit-autofill,
+// textarea:-webkit-autofill:hover
+// textarea:-webkit-autofill:focus,
+// select:-webkit-autofill,
+// select:-webkit-autofill:hover,
+// select:-webkit-autofill:focus {
+//   border: none;
+//   -webkit-text-fill-color: white;
+//   -webkit-box-shadow: 0 0 0px 0px transparent inset;
+//   transition: background-color 50000s ease-in-out 0s;
+// }
